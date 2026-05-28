@@ -179,6 +179,11 @@ class ChangeProfileInfoSerializer(serializers.ModelSerializer):
         instance.save()
         return instance
 
+    def to_representation(self, instance):
+        user = super().to_representation(instance)
+        user["token"] = str(instance.token)
+        return user
+
 
 class UploadProfilePhotoSerializer(serializers.ModelSerializer):
     photo = serializers.ImageField(required=True)
@@ -192,3 +197,156 @@ class UploadProfilePhotoSerializer(serializers.ModelSerializer):
         instance.auth_status = DONE
         instance.save()
         return instance
+
+
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+    photo = serializers.ImageField(required=False, allow_null=True)
+
+    class Meta:
+        model = CustomUser
+        fields = [
+            "id",
+            "username",
+            "first_name",
+            "last_name",
+            "email",
+            "phone_number",
+            "photo",
+            "user_role"
+        ]
+
+
+class ProfileUpdateSerializer(serializers.ModelSerializer):
+    photo = serializers.ImageField(required=False, allow_null=True)
+
+    class Meta:
+        model = CustomUser
+        fields = ["first_name", "last_name", "user_role", "photo"]
+        extra_kwargs = {
+            "first_name": {"required": False},
+            "last_name": {"required": False},
+            "user_role": {"required": False},
+        }
+
+    def update(self, instance, validated_data):
+        instance.first_name = validated_data.get("first_name", instance.first_name)
+        instance.last_name = validated_data.get("last_name", instance.last_name)
+        instance.user_role = validated_data.get("user_role", instance.user_role)
+
+        if "photo" in validated_data:
+            instance.photo = validated_data.get("photo")
+
+        instance.save()
+        return instance
+
+
+class LoginSerializer(serializers.Serializer):
+    email_or_phone = serializers.CharField(required=True, write_only=True)
+    password = serializers.CharField(required=True, write_only=True)
+
+    def validate(self, attrs):
+        user_input = attrs.get("email_or_phone", "")
+        password = attrs.get("password", "")
+        field_type, cleaned_value = check_email_or_phone(user_input)
+
+        if field_type == "email":
+            user = CustomUser.objects.filter(email=cleaned_value).first()
+        else:
+            user = CustomUser.objects.filter(phone_number=cleaned_value).first()
+
+        if not user or not user.check_password(password):
+            raise ValidationError({"message": "Email/phone or password is incorrect"})
+
+        attrs["user"] = user
+        return attrs
+
+
+class ForgotPasswordSerializer(serializers.Serializer):
+    email_or_phone = serializers.CharField(required=True, write_only=True)
+
+    def validate(self, attrs):
+        user_input = attrs.get("email_or_phone", "")
+        field_type, cleaned_value = check_email_or_phone(user_input)
+
+        if field_type == "email":
+            user = CustomUser.objects.filter(email=cleaned_value).first()
+            verify_type = VIA_EMAIL
+        else:
+            user = CustomUser.objects.filter(phone_number=cleaned_value).first()
+            verify_type = VIA_PHONE
+
+        if not user:
+            raise ValidationError({"message": "User not found!"})
+
+        attrs["user"] = user
+        attrs["verify_type"] = verify_type
+        return attrs
+
+
+class ResetPasswordSerializer(serializers.Serializer):
+    email_or_phone = serializers.CharField(required=True, write_only=True)
+    code = serializers.CharField(max_length=4, required=True, write_only=True)
+    new_password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
+    confirm_password = serializers.CharField(write_only=True, required=True)
+
+    def validate(self, attrs):
+        if attrs["new_password"] != attrs["confirm_password"]:
+            raise ValidationError({"confirm_password": "Passwords do not match!"})
+
+        user_input = attrs.get("email_or_phone", "")
+        code = attrs.get("code", "").strip()
+
+        field_type, cleaned_value = check_email_or_phone(user_input)
+
+        if field_type == "email":
+            user = CustomUser.objects.filter(email=cleaned_value).first()
+            verify_type = VIA_EMAIL
+        else:
+            user = CustomUser.objects.filter(phone_number=cleaned_value).first()
+            verify_type = VIA_PHONE
+
+        if not user:
+            raise ValidationError({"message": "User not found!"})
+
+        verify_code = CodeVerify.objects.filter(
+            user=user,
+            verify_type=verify_type,
+            code=code,
+            is_used=False,
+        ).order_by("-created_at").first()
+
+        if not verify_code:
+            raise ValidationError({"code": "Verification code is incorrect!"})
+
+        from django.utils import timezone
+
+        if verify_code.expiration_time and verify_code.expiration_time < timezone.now():
+            raise ValidationError({"code": "The code has expired!"})
+
+        attrs["user"] = user
+        attrs["verify_code"] = verify_code
+        return attrs
+
+
+class ChangePasswordSerializer(serializers.Serializer):
+    old_password = serializers.CharField(required=True, write_only=True)
+    new_password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
+    confirm_password = serializers.CharField(write_only=True, required=True)
+
+    def validate(self, attrs):
+        request = self.context.get("request")
+        user = getattr(request, "user", None)
+
+        if not user:
+            raise ValidationError({"message": "Authentication required"})
+
+        if attrs["new_password"] != attrs["confirm_password"]:
+            raise ValidationError({"confirm_password": "Passwords do not match!"})
+
+        if not user.check_password(attrs["old_password"]):
+            raise ValidationError({"old_password": "Old password is incorrect"})
+
+        attrs["user"] = user
+        return attrs
