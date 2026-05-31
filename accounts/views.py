@@ -1,13 +1,9 @@
-from django.shortcuts import render
 from .models import (
     VIA_EMAIL,
     VIA_PHONE,
-    SELLER,
-    ORDINARY_USER,
     CODE_VERIFY,
     CHANGE_INFO,
 )
-from rest_framework.generics import CreateAPIView
 from rest_framework import permissions
 from .serializers import (
     ChangePasswordSerializer,
@@ -28,13 +24,20 @@ from shared.utils import send_to_mail
 from django.conf import settings
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework_simplejwt.token_blacklist.models import BlacklistedToken
 
 
-class SignUpView(CreateAPIView):
+class SignUpView(APIView):
     permission_classes = [permissions.AllowAny]
-    serializer_class = SignUpSerializer
-    queryset = CustomUser.objects.all()
+
+    def post(self, request, *args, **kwargs):
+        serializer = SignUpSerializer(data=request.data)
+        if serializer.is_valid():
+            user = serializer.save()
+            return Response(
+                {"success": True, "data": SignUpSerializer(user).data},
+                status=status.HTTP_201_CREATED,
+            )
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class VerifyCodeView(APIView):
@@ -211,7 +214,7 @@ class LogoutView(APIView):
 
         try:
             token = RefreshToken(refresh_token)
-            BlacklistedToken.objects.get_or_create(token=token)
+            token.blacklist()
             return Response(
                 {"success": True, "message": "Logout successful"},
                 status=status.HTTP_200_OK,

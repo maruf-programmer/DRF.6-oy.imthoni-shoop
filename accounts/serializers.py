@@ -148,6 +148,7 @@ class ChangeProfileInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
         fields = [
+            "username",
             "first_name",
             "last_name",
             "password",
@@ -181,7 +182,7 @@ class ChangeProfileInfoSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         user = super().to_representation(instance)
-        user["token"] = str(instance.token)
+        user["token"] = instance.token()
         return user
 
 
@@ -199,8 +200,6 @@ class UploadProfilePhotoSerializer(serializers.ModelSerializer):
         return instance
 
 
-
-
 class ProfileSerializer(serializers.ModelSerializer):
     photo = serializers.ImageField(required=False, allow_null=True)
 
@@ -214,7 +213,7 @@ class ProfileSerializer(serializers.ModelSerializer):
             "email",
             "phone_number",
             "photo",
-            "user_role"
+            "user_role",
         ]
 
 
@@ -288,7 +287,9 @@ class ForgotPasswordSerializer(serializers.Serializer):
 class ResetPasswordSerializer(serializers.Serializer):
     email_or_phone = serializers.CharField(required=True, write_only=True)
     code = serializers.CharField(max_length=4, required=True, write_only=True)
-    new_password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
+    new_password = serializers.CharField(
+        write_only=True, required=True, validators=[validate_password]
+    )
     confirm_password = serializers.CharField(write_only=True, required=True)
 
     def validate(self, attrs):
@@ -310,12 +311,16 @@ class ResetPasswordSerializer(serializers.Serializer):
         if not user:
             raise ValidationError({"message": "User not found!"})
 
-        verify_code = CodeVerify.objects.filter(
-            user=user,
-            verify_type=verify_type,
-            code=code,
-            is_used=False,
-        ).order_by("-created_at").first()
+        verify_code = (
+            CodeVerify.objects.filter(
+                user=user,
+                verify_type=verify_type,
+                code=code,
+                is_used=False,
+            )
+            .order_by("-created_at")
+            .first()
+        )
 
         if not verify_code:
             raise ValidationError({"code": "Verification code is incorrect!"})
@@ -332,7 +337,9 @@ class ResetPasswordSerializer(serializers.Serializer):
 
 class ChangePasswordSerializer(serializers.Serializer):
     old_password = serializers.CharField(required=True, write_only=True)
-    new_password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
+    new_password = serializers.CharField(
+        write_only=True, required=True, validators=[validate_password]
+    )
     confirm_password = serializers.CharField(write_only=True, required=True)
 
     def validate(self, attrs):

@@ -40,6 +40,14 @@ urlpatterns = [
     # main urls
     path("admin/", admin.site.urls),
     path("auth/", include("accounts.urls")),
+    path("api/categories/", include("categories.urls")),
+    path("api/products/", include("product.urls")),
+    path("api/cart/", include("cart.urls")),
+    path("api/orders/", include("order.urls")),
+    path("api/payments/", include("payments.urls")),
+    path("api/wishlist/", include("wishlist.urls")),
+    path("api/reviews/", include("reviews.urls")),
+    path("api/notifications/", include("notifications.urls")),
 ]
 
 if settings.DEBUG:
