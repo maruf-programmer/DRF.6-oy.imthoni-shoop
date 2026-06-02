@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from .models import Order, OrderItem
 from product.serializers import ProductSerializer
+from drf_spectacular.utils import extend_schema_serializer, OpenApiExample
+
 
 class OrderItemSerializer(serializers.ModelSerializer):
     product = ProductSerializer(read_only=True)
@@ -9,6 +11,16 @@ class OrderItemSerializer(serializers.ModelSerializer):
         model = OrderItem
         fields = ["id", "product", "quantity", "total_price"]
 
+
+@extend_schema_serializer(
+    examples=[
+        OpenApiExample(
+            "Buyurtma yaratish (checkout)",
+            value={},  # checkout avtomatik savatdan oladi
+            request_only=True,
+        ),
+    ]
+)
 class OrderSerializer(serializers.ModelSerializer):
     items = OrderItemSerializer(many=True, read_only=True)
     user_email = serializers.ReadOnlyField(source="user.email")

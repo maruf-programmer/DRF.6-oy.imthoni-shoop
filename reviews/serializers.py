@@ -1,7 +1,23 @@
 from rest_framework import serializers
 from .models import Review
 from django.core.validators import MinValueValidator, MaxValueValidator
+from drf_spectacular.utils import extend_schema_serializer, OpenApiExample
 
+
+@extend_schema_serializer(
+    examples=[
+        OpenApiExample(
+            "Sharh qoldirish misoli",
+            value={
+                "product": "uuid",
+                "rating": 5,
+                "title": "Ajoyib!",
+                "comment": "Juda yaxshi mahsulot",
+            },
+            request_only=True,
+        ),
+    ]
+)
 class ReviewSerializer(serializers.ModelSerializer):
     user_name = serializers.ReadOnlyField(source="user.username")
 

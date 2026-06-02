@@ -1,26 +1,43 @@
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
+from drf_spectacular.utils import extend_schema_serializer, OpenApiExample
 from .models import CustomUser, VIA_EMAIL, VIA_PHONE
 from shared.utility import check_email_or_phone
 from shared.utils import send_to_mail
-
 from django.utils import timezone
-from .models import CustomUser, CodeVerify, CHANGE_INFO, DONE
+from .models import CodeVerify, CHANGE_INFO, DONE
 from django.contrib.auth.password_validation import validate_password
 
 
+@extend_schema_serializer(
+    examples=[
+        OpenApiExample(
+            "Misol (email)",
+            value={"email_or_phone": "user@example.com"},
+            request_only=True,
+        ),
+        OpenApiExample(
+            "Misol (telefon)",
+            value={"email_or_phone": "+998901234567"},
+            request_only=True,
+        ),
+    ]
+)
 class SignUpSerializer(serializers.ModelSerializer):
-    email_or_phone = serializers.CharField(write_only=True, required=True)
+    email_or_phone = serializers.CharField(
+        write_only=True,
+        required=True,
+        help_text="Email yoki telefon raqam (masalan: user@example.com yoki +998901234567)",
+    )
 
     class Meta:
         model = CustomUser
         fields = ["id", "auth_type", "auth_status", "email_or_phone"]
         read_only_fields = ["auth_type", "auth_status"]
 
+    # validate, create, to_representation o‘zgarishsiz qoladi (oldingi kod bilan bir xil)
     def validate(self, attrs):
         user_input = attrs.get("email_or_phone", "")
-
-        # The function returns the type itself and the formatted value
         field_type, cleaned_value = check_email_or_phone(user_input)
 
         if field_type == "email":
@@ -28,18 +45,14 @@ class SignUpSerializer(serializers.ModelSerializer):
                 raise ValidationError(
                     {"email_or_phone": "Bu email manzili allaqachon ro'yxatdan o'tgan!"}
                 )
-
             attrs["email"] = cleaned_value
             attrs["auth_type"] = VIA_EMAIL
 
         elif field_type == "phone":
             if CustomUser.objects.filter(phone_number=cleaned_value).exists():
                 raise ValidationError(
-                    {
-                        "email_or_phone": "Bu telefon raqami allaqachon ro'yxatdan o'tgan!"
-                    }
+                    {"email_or_phone": "Bu telefon raqami allaqachon ro'yxatdan o'tgan!"}
                 )
-
             attrs["phone_number"] = cleaned_value
             attrs["auth_type"] = VIA_PHONE
 
@@ -67,9 +80,27 @@ class SignUpSerializer(serializers.ModelSerializer):
         return data
 
 
+@extend_schema_serializer(
+    examples=[
+        OpenApiExample(
+            "Misol (email)",
+            value={"email_or_phone": "user@example.com", "code": "1234"},
+            request_only=True,
+        ),
+    ]
+)
 class VerifyCodeSerializer(serializers.Serializer):
-    email_or_phone = serializers.CharField(required=True, write_only=True)
-    code = serializers.CharField(max_length=4, required=True, write_only=True)
+    email_or_phone = serializers.CharField(
+        required=True,
+        write_only=True,
+        help_text="Email yoki telefon raqam (ro'yxatdan o'tishdagi bilan bir xil)",
+    )
+    code = serializers.CharField(
+        max_length=4,
+        required=True,
+        write_only=True,
+        help_text="Email/SMS orqali kelgan 4 xonali kod",
+    )
 
     def validate(self, attrs):
         user_input = attrs.get("email_or_phone", "")
@@ -103,7 +134,11 @@ class VerifyCodeSerializer(serializers.Serializer):
 
 
 class ResendCodeSerializer(serializers.Serializer):
-    email_or_phone = serializers.CharField(required=True, write_only=True)
+    email_or_phone = serializers.CharField(
+        required=True,
+        write_only=True,
+        help_text="Email yoki telefon raqam",
+    )
 
     def validate(self, attrs):
         user_input = attrs.get("email_or_phone", "")
@@ -136,19 +171,40 @@ class ResendCodeSerializer(serializers.Serializer):
         return attrs
 
 
+@extend_schema_serializer(
+    examples=[
+        OpenApiExample(
+            "Misol",
+            value={
+                "first_name": "Ali",
+                "last_name": "Valiyev",
+                "password": "strong123",
+                "confirm_password": "strong123",
+                "user_role": "ordinary_user",
+            },
+            request_only=True,
+        ),
+    ]
+)
 class ChangeProfileInfoSerializer(serializers.ModelSerializer):
     password = serializers.CharField(
-        write_only=True, required=True, validators=[validate_password]
+        write_only=True, required=True, validators=[validate_password],
+        help_text="Yangi parol (kamida 8 belgi, raqam va harf)"
     )
-    confirm_password = serializers.CharField(write_only=True, required=True)
-    first_name = serializers.CharField(required=True, max_length=100)
-    last_name = serializers.CharField(required=True, max_length=100)
-    user_role = serializers.CharField(required=True, max_length=100)
+    confirm_password = serializers.CharField(
+        write_only=True, required=True,
+        help_text="Parolni tasdiqlash (yuqoridagi parol bilan bir xil bo'lishi kerak)"
+    )
+    first_name = serializers.CharField(required=True, max_length=100, help_text="Ism")
+    last_name = serializers.CharField(required=True, max_length=100, help_text="Familiya")
+    user_role = serializers.CharField(
+        required=True, max_length=100,
+        help_text="Rol: ordinary_user (oddiy), seller (sotuvchi), admin (administrator)"
+    )
 
     class Meta:
         model = CustomUser
         fields = [
-            "username",
             "first_name",
             "last_name",
             "password",
@@ -187,7 +243,7 @@ class ChangeProfileInfoSerializer(serializers.ModelSerializer):
 
 
 class UploadProfilePhotoSerializer(serializers.ModelSerializer):
-    photo = serializers.ImageField(required=True)
+    photo = serializers.ImageField(required=True, help_text="Profil uchun rasm (jpg, png)")
 
     class Meta:
         model = CustomUser
@@ -201,7 +257,7 @@ class UploadProfilePhotoSerializer(serializers.ModelSerializer):
 
 
 class ProfileSerializer(serializers.ModelSerializer):
-    photo = serializers.ImageField(required=False, allow_null=True)
+    photo = serializers.ImageField(required=False, allow_null=True, help_text="Foydalanuvchi rasmi")
 
     class Meta:
         model = CustomUser
@@ -213,12 +269,12 @@ class ProfileSerializer(serializers.ModelSerializer):
             "email",
             "phone_number",
             "photo",
-            "user_role",
+            "user_role"
         ]
 
 
 class ProfileUpdateSerializer(serializers.ModelSerializer):
-    photo = serializers.ImageField(required=False, allow_null=True)
+    photo = serializers.ImageField(required=False, allow_null=True, help_text="Yangi rasm yuklash (ixtiyoriy)")
 
     class Meta:
         model = CustomUser
@@ -241,9 +297,24 @@ class ProfileUpdateSerializer(serializers.ModelSerializer):
         return instance
 
 
+@extend_schema_serializer(
+    examples=[
+        OpenApiExample(
+            "Misol (email)",
+            value={"email_or_phone": "user@example.com", "password": "mypassword"},
+            request_only=True,
+        ),
+    ]
+)
 class LoginSerializer(serializers.Serializer):
-    email_or_phone = serializers.CharField(required=True, write_only=True)
-    password = serializers.CharField(required=True, write_only=True)
+    email_or_phone = serializers.CharField(
+        required=True, write_only=True,
+        help_text="Email yoki telefon raqam"
+    )
+    password = serializers.CharField(
+        required=True, write_only=True,
+        help_text="Parol"
+    )
 
     def validate(self, attrs):
         user_input = attrs.get("email_or_phone", "")
@@ -263,7 +334,10 @@ class LoginSerializer(serializers.Serializer):
 
 
 class ForgotPasswordSerializer(serializers.Serializer):
-    email_or_phone = serializers.CharField(required=True, write_only=True)
+    email_or_phone = serializers.CharField(
+        required=True, write_only=True,
+        help_text="Parolni tiklash uchun email yoki telefon"
+    )
 
     def validate(self, attrs):
         user_input = attrs.get("email_or_phone", "")
@@ -285,12 +359,22 @@ class ForgotPasswordSerializer(serializers.Serializer):
 
 
 class ResetPasswordSerializer(serializers.Serializer):
-    email_or_phone = serializers.CharField(required=True, write_only=True)
-    code = serializers.CharField(max_length=4, required=True, write_only=True)
-    new_password = serializers.CharField(
-        write_only=True, required=True, validators=[validate_password]
+    email_or_phone = serializers.CharField(
+        required=True, write_only=True,
+        help_text="Email yoki telefon"
     )
-    confirm_password = serializers.CharField(write_only=True, required=True)
+    code = serializers.CharField(
+        max_length=4, required=True, write_only=True,
+        help_text="Tasdiqlash kodi"
+    )
+    new_password = serializers.CharField(
+        write_only=True, required=True, validators=[validate_password],
+        help_text="Yangi parol"
+    )
+    confirm_password = serializers.CharField(
+        write_only=True, required=True,
+        help_text="Yangi parolni tasdiqlang"
+    )
 
     def validate(self, attrs):
         if attrs["new_password"] != attrs["confirm_password"]:
@@ -311,16 +395,12 @@ class ResetPasswordSerializer(serializers.Serializer):
         if not user:
             raise ValidationError({"message": "User not found!"})
 
-        verify_code = (
-            CodeVerify.objects.filter(
-                user=user,
-                verify_type=verify_type,
-                code=code,
-                is_used=False,
-            )
-            .order_by("-created_at")
-            .first()
-        )
+        verify_code = CodeVerify.objects.filter(
+            user=user,
+            verify_type=verify_type,
+            code=code,
+            is_used=False,
+        ).order_by("-created_at").first()
 
         if not verify_code:
             raise ValidationError({"code": "Verification code is incorrect!"})
@@ -336,11 +416,18 @@ class ResetPasswordSerializer(serializers.Serializer):
 
 
 class ChangePasswordSerializer(serializers.Serializer):
-    old_password = serializers.CharField(required=True, write_only=True)
-    new_password = serializers.CharField(
-        write_only=True, required=True, validators=[validate_password]
+    old_password = serializers.CharField(
+        required=True, write_only=True,
+        help_text="Eski parol"
     )
-    confirm_password = serializers.CharField(write_only=True, required=True)
+    new_password = serializers.CharField(
+        write_only=True, required=True, validators=[validate_password],
+        help_text="Yangi parol"
+    )
+    confirm_password = serializers.CharField(
+        write_only=True, required=True,
+        help_text="Yangi parolni tasdiqlang"
+    )
 
     def validate(self, attrs):
         request = self.context.get("request")

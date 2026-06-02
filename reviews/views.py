@@ -1,16 +1,26 @@
-from rest_framework import viewsets, mixins
+from rest_framework import viewsets, status
+from rest_framework.decorators import action
+from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from shared.permissions import IsOwnerOrAdmin
 from .models import Review
 from .serializers import ReviewSerializer
-from rest_framework.decorators import action
+from drf_spectacular.utils import extend_schema, extend_schema_view
 
+
+@extend_schema_view(
+    list=extend_schema(description="Tasdiqlangan sharhlar ro'yxati (o'zinikini ham ko'radi)."),
+    create=extend_schema(description="Yangi sharh qoldirish."),
+    retrieve=extend_schema(description="Bitta sharh."),
+    update=extend_schema(description="Sharhni yangilash (egasi yoki admin)."),
+    partial_update=extend_schema(description="Sharhni qisman yangilash."),
+    destroy=extend_schema(description="Sharhni o'chirish (egasi yoki admin)."),
+)
 class ReviewViewSet(viewsets.ModelViewSet):
     serializer_class = ReviewSerializer
-    permission_classes = [IsAuthenticated]  # must be logged in to write reviews
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        # Public can see approved reviews; admin sees all; user sees own + approved
         if self.request.user.is_authenticated and self.request.user.user_role == "admin":
             return Review.objects.all()
         base = Review.objects.filter(is_approved=True)
@@ -25,6 +35,7 @@ class ReviewViewSet(viewsets.ModelViewSet):
             self.permission_classes = [IsAuthenticated]
         return super().get_permissions()
 
+    @extend_schema(description="Sharhni admin tomonidan tasdiqlash.")
     @action(detail=True, methods=["post"])
     def approve(self, request, pk=None):
         review = self.get_object()

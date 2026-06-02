@@ -74,12 +74,17 @@ SIMPLE_JWT = {
 
 
 SPECTACULAR_SETTINGS = {
-    "TITLE": "Your API Title",
-    "DESCRIPTION": "Your API description goes here.",
-    "VERSION": "1.0.0",
-    "SERVE_INCLUDE_SCHEMA": False,
-    # OTHER INFORMATIVE SETTINGS CAN GO HERE
+"TITLE": "Online Shop API",
+"DESCRIPTION": "Bu loyiha zamonaviy onlayn do‘kon uchun RESTful API taqdim etadi. "
+                "Foydalanuvchilar ro‘yxatdan o‘tish, mahsulotlarni ko‘rish, savatga qo‘shish, "
+                "buyurtma berish, to‘lovni tasdiqlash va sharhlar qoldirish imkoniyatiga ega.",
+"VERSION": "1.0.0",
+"SERVE_INCLUDE_SCHEMA": False,
+"TOS": "https://www.google.com/policies/terms/",
+"CONTACT": {"name": "Support Team", "email": "support@example.com"},
+"LICENSE": {"name": "MIT License"},
 }
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

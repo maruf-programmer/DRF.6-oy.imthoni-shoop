@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Cart, CartItem
-from product.models import Product
+from drf_spectacular.utils import extend_schema_serializer, OpenApiExample
+
 
 class CartItemSerializer(serializers.ModelSerializer):
     product_title = serializers.ReadOnlyField(source="product.title")
@@ -9,8 +10,17 @@ class CartItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = CartItem
         fields = ["id", "product", "product_title", "product_price", "quantity"]
-        read_only_fields = ["id"]
 
+
+@extend_schema_serializer(
+    examples=[
+        OpenApiExample(
+            "Savatga qo'shish misoli",
+            value={"product": "uuid", "quantity": 2},
+            request_only=True,
+        ),
+    ]
+)
 class CartSerializer(serializers.ModelSerializer):
     items = CartItemSerializer(many=True, read_only=True)
     total_price = serializers.SerializerMethodField()

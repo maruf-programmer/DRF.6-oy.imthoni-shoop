@@ -6,7 +6,14 @@ from shared.permissions import IsOrderOwnerOrAdmin
 from .models import Order, OrderItem
 from .serializers import OrderSerializer
 from cart.models import Cart
+from drf_spectacular.utils import extend_schema, extend_schema_view
 
+
+@extend_schema_view(
+    list=extend_schema(description="Foydalanuvchining barcha buyurtmalari (admin hammasini ko'radi)."),
+    retrieve=extend_schema(description="Bitta buyurtma tafsilotlari."),
+    partial_update=extend_schema(description="Buyurtma holatini yangilash (admin)."),
+)
 class OrderViewSet(viewsets.ModelViewSet):
     serializer_class = OrderSerializer
     permission_classes = [IsAuthenticated]
@@ -23,9 +30,12 @@ class OrderViewSet(viewsets.ModelViewSet):
             self.permission_classes = [IsAuthenticated]
         return super().get_permissions()
 
+    @extend_schema(
+        description="Savatdagi barcha mahsulotlarni buyurtmaga o'tkazish. Savat tozalanadi.",
+        responses={201: OrderSerializer},
+    )
     @action(detail=False, methods=["post"])
     def checkout(self, request):
-        """Convert cart items into an order."""
         cart = Cart.objects.filter(user=request.user).first()
         if not cart or not cart.items.exists():
             return Response({"error": "Cart is empty"}, status=400)
@@ -39,30 +49,23 @@ class OrderViewSet(viewsets.ModelViewSet):
             price = item.product.discount_price or item.product.price
             item_total = price * item.quantity
             OrderItem.objects.create(
-                order=order,
-                product=item.product,
-                quantity=item.quantity,
-                total_price=item_total
+                order=order, product=item.product, quantity=item.quantity, total_price=item_total
             )
             total += item_total
-            # Decrease stock
             item.product.stock -= item.quantity
             item.product.save()
 
         order.total_price = total
         order.save()
-        cart.items.all().delete()   # clear cart after ordering
-
-        # Optionally create a pending payment here
-        # Payment.objects.create(order=order, amount=total, status="pending")
+        cart.items.all().delete()
         return Response(OrderSerializer(order).data, status=201)
 
+    @extend_schema(description="Buyurtmani bekor qilish (faqat 'pending' holatda).")
     @action(detail=True, methods=["post"])
     def cancel(self, request, pk=None):
         order = self.get_object()
         if order.status != "pending":
             return Response({"error": "Only pending orders can be cancelled"}, status=400)
-        # Restore stock
         for item in order.items.all():
             item.product.stock += item.quantity
             item.product.save()

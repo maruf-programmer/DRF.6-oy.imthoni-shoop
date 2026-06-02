@@ -10,7 +10,6 @@ class Category(BaseModel):
         null=True,
         blank=True
     )
-    image = models.ImageField(upload_to="categories/")
 
     def __str__(self):
         return self.name
