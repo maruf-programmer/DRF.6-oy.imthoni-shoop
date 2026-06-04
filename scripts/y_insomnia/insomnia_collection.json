@@ -1,0 +1,184 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2026-06-03T18:00:00.000Z",
+  "__export_source": "insomnia.desktop.app:v9.0.0",
+  "resources": [
+    {
+      "_id": "wrk_6f369c76b747",
+      "parentId": null,
+      "modified": 1700000000000,
+      "created": 1700000000000,
+      "name": "Imtihon 77 Shop API",
+      "description": "Ustoz tekshirishi uchun barcha tayyor API so'rovlar",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "env_839478afeb7b",
+      "parentId": "wrk_6f369c76b747",
+      "modified": 1700000000000,
+      "created": 1700000000000,
+      "name": "Base Environment",
+      "data": {
+        "base_url": "http://127.0.0.1:8000/api/v1"
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "base_url"
+        ]
+      },
+      "color": null,
+      "isPrivate": false,
+      "_type": "environment"
+    },
+    {
+      "_id": "fld_acbbe797af69",
+      "parentId": "wrk_6f369c76b747",
+      "name": "1. Categories API",
+      "_type": "folder"
+    },
+    {
+      "_id": "fld_c3fe428979d1",
+      "parentId": "wrk_6f369c76b747",
+      "name": "2. Products API",
+      "_type": "folder"
+    },
+    {
+      "_id": "req_961cbeea0cf7",
+      "parentId": "fld_acbbe797af69",
+      "name": "Get All Categories (List)",
+      "method": "GET",
+      "url": "{{ base_url }}/categories/",
+      "headers": [],
+      "body": {},
+      "parameters": [],
+      "_type": "request"
+    },
+    {
+      "_id": "req_3af5478f75fe",
+      "parentId": "fld_acbbe797af69",
+      "name": "Get Single Category (Detail) -> electronics",
+      "method": "GET",
+      "url": "{{ base_url }}/categories/ee2b218f-0425-436e-a7fd-254a149f9bdb/",
+      "headers": [],
+      "body": {},
+      "parameters": [],
+      "_type": "request"
+    },
+    {
+      "_id": "req_bd20cf967f40",
+      "parentId": "fld_acbbe797af69",
+      "name": "Update Category (PUT)",
+      "method": "PUT",
+      "url": "{{ base_url }}/categories/ee2b218f-0425-436e-a7fd-254a149f9bdb/",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Electronics Updated\",\n  \"slug\": \"electronics\"\n}"
+      },
+      "parameters": [],
+      "_type": "request"
+    },
+    {
+      "_id": "req_e5b9746f131e",
+      "parentId": "fld_acbbe797af69",
+      "name": "Create Category (POST)",
+      "method": "POST",
+      "url": "{{ base_url }}/categories/",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"New Test Category\",\n  \"slug\": \"new-test-category\"\n}"
+      },
+      "parameters": [],
+      "_type": "request"
+    },
+    {
+      "_id": "req_11e43b7a6da9",
+      "parentId": "fld_c3fe428979d1",
+      "name": "Get All Products (List)",
+      "method": "GET",
+      "url": "{{ base_url }}/products/",
+      "headers": [],
+      "body": {},
+      "parameters": [],
+      "_type": "request"
+    },
+    {
+      "_id": "req_9207650f0e15",
+      "parentId": "fld_c3fe428979d1",
+      "name": "Filter Products by Category Slug (Query Param)",
+      "method": "GET",
+      "url": "{{ base_url }}/products/",
+      "headers": [],
+      "body": {},
+      "parameters": [
+        {
+          "name": "category",
+          "value": "mobile-phones"
+        }
+      ],
+      "_type": "request"
+    },
+    {
+      "_id": "req_ad4b73e46fcb",
+      "parentId": "fld_c3fe428979d1",
+      "name": "Get Single Product (Detail) -> iPhone 15 Pro",
+      "method": "GET",
+      "url": "{{ base_url }}/products/19b60568-b95b-4ebd-a13f-f6f27831b3b5/",
+      "headers": [],
+      "body": {},
+      "parameters": [],
+      "_type": "request"
+    },
+    {
+      "_id": "req_1c88390b6809",
+      "parentId": "fld_c3fe428979d1",
+      "name": "Update Product (PUT)",
+      "method": "PUT",
+      "url": "{{ base_url }}/products/19b60568-b95b-4ebd-a13f-f6f27831b3b5/",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"title\": \"iPhone 15 Pro Pro Max\",\n  \"slug\": \"iphone-15-pro-9614-pro-max\",\n  \"category_id\": \"b62f9783-0c8a-42d7-ba48-026a1a8c7099\"\n}"
+      },
+      "parameters": [],
+      "_type": "request"
+    },
+    {
+      "_id": "req_e0e11ff18ea8",
+      "parentId": "fld_c3fe428979d1",
+      "name": "Create Product (POST)",
+      "method": "POST",
+      "url": "{{ base_url }}/products/",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"title\": \"Xiaomi 15 Ultra\",\n  \"slug\": \"xiaomi-15-ultra-2026\",\n  \"category_id\": \"ee2b218f-0425-436e-a7fd-254a149f9bdb\"\n}"
+      },
+      "parameters": [],
+      "_type": "request"
+    }
+  ]
+}

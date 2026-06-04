@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from .models import Product, ProductImage
-from drf_spectacular.utils import extend_schema_serializer, OpenApiExample
 
 
 class ProductImageSerializer(serializers.ModelSerializer):
@@ -9,21 +8,6 @@ class ProductImageSerializer(serializers.ModelSerializer):
         fields = ["id", "image", "is_main"]
 
 
-@extend_schema_serializer(
-    examples=[
-        OpenApiExample(
-            "Yangi mahsulot misoli",
-            value={
-                "category": "uuid-of-category",
-                "title": "iPhone 15",
-                "description": "Ajoyib smartfon",
-                "price": "999.99",
-                "stock": 10,
-            },
-            request_only=True,
-        ),
-    ]
-)
 class ProductSerializer(serializers.ModelSerializer):
     images = ProductImageSerializer(many=True, read_only=True)
     seller_name = serializers.ReadOnlyField(source="seller.username")

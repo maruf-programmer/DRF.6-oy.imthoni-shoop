@@ -1,0 +1,1016 @@
+{
+  "categories": [
+    {
+      "id": "ee2b218f-0425-436e-a7fd-254a149f9bdb",
+      "slug": "electronics",
+      "name": "Electronics"
+    },
+    {
+      "id": "9bd6b863-3ab4-4873-a2bb-c72ca97e5596",
+      "slug": "computers-laptops",
+      "name": "Computers & Laptops"
+    },
+    {
+      "id": "b62f9783-0c8a-42d7-ba48-026a1a8c7099",
+      "slug": "mobile-phones",
+      "name": "Mobile Phones"
+    },
+    {
+      "id": "fc8c815f-e65d-4262-9fe1-4631169a5b61",
+      "slug": "tablets",
+      "name": "Tablets"
+    },
+    {
+      "id": "f000b22f-0cbc-4681-8a6c-5fa0396f5b4e",
+      "slug": "clothing-apparel",
+      "name": "Clothing & Apparel"
+    },
+    {
+      "id": "eae07e62-3db7-4a83-b974-72d128f68560",
+      "slug": "men-clothing",
+      "name": "Men Clothing"
+    },
+    {
+      "id": "fde43b82-edc8-4804-a234-4498fd15a58f",
+      "slug": "women-clothing",
+      "name": "Women Clothing"
+    },
+    {
+      "id": "7a5b3a2a-5fed-4354-8a06-d0ae2d2fba42",
+      "slug": "shoes",
+      "name": "Shoes"
+    },
+    {
+      "id": "6d75fedb-7b89-417b-a997-ad4a40f49036",
+      "slug": "home-kitchen",
+      "name": "Home & Kitchen"
+    },
+    {
+      "id": "ba9540b6-a568-4810-89a8-cfe3d4ff0b4c",
+      "slug": "furniture",
+      "name": "Furniture"
+    },
+    {
+      "id": "6636c619-9517-4e0e-afdc-b01cb1ee13be",
+      "slug": "kitchen-appliances",
+      "name": "Kitchen Appliances"
+    },
+    {
+      "id": "2e53fc83-e92b-478d-a157-7d94d5da7369",
+      "slug": "bedding",
+      "name": "Bedding"
+    },
+    {
+      "id": "c93f1c04-511d-4eaf-b684-c615f1476998",
+      "slug": "sports-outdoors",
+      "name": "Sports & Outdoors"
+    },
+    {
+      "id": "1c3e19cb-0c03-48de-b8e9-2e962a5d364a",
+      "slug": "fitness-equipment",
+      "name": "Fitness Equipment"
+    },
+    {
+      "id": "771c716e-b0e9-4504-a3ec-ca5fe3cb03d2",
+      "slug": "outdoor-gear",
+      "name": "Outdoor Gear"
+    },
+    {
+      "id": "ba09d4ab-48db-4259-bd7f-211d7d272931",
+      "slug": "books-media",
+      "name": "Books & Media"
+    },
+    {
+      "id": "ea10b4a4-88da-4a32-9ccc-97d950a392d9",
+      "slug": "beauty-personal-care",
+      "name": "Beauty & Personal Care"
+    },
+    {
+      "id": "d5116bd9-fd7e-43d5-b105-4dbe9ae37a55",
+      "slug": "dummy-category-1",
+      "name": "Dummy Category 1"
+    },
+    {
+      "id": "a6718df5-90bd-41f2-b940-ea84c2ef7e06",
+      "slug": "dummy-category-2",
+      "name": "Dummy Category 2"
+    },
+    {
+      "id": "ecf307b5-9530-41b5-a869-8f799cd743b7",
+      "slug": "dummy-category-3",
+      "name": "Dummy Category 3"
+    },
+    {
+      "id": "5714a4f0-881e-4b28-9cbb-46e8bf8bbdbf",
+      "slug": "dummy-category-4",
+      "name": "Dummy Category 4"
+    },
+    {
+      "id": "61e7b6c5-04fb-4346-bf9e-d83c093701c4",
+      "slug": "dummy-category-5",
+      "name": "Dummy Category 5"
+    }
+  ],
+  "products": [
+    {
+      "id": "19b60568-b95b-4ebd-a13f-f6f27831b3b5",
+      "slug": "iphone-15-pro-9614",
+      "title": "iPhone 15 Pro",
+      "category_id": "b62f9783-0c8a-42d7-ba48-026a1a8c7099"
+    },
+    {
+      "id": "7b99f5d2-220d-49ec-8035-d039398a63ca",
+      "slug": "samsung-galaxy-s24-1095",
+      "title": "Samsung Galaxy S24",
+      "category_id": "b62f9783-0c8a-42d7-ba48-026a1a8c7099"
+    },
+    {
+      "id": "71768fd0-c309-4444-aa98-0268d459390c",
+      "slug": "xiaomi-14-ultra-5678",
+      "title": "Xiaomi 14 Ultra",
+      "category_id": "b62f9783-0c8a-42d7-ba48-026a1a8c7099"
+    },
+    {
+      "id": "755d5132-214f-4fcb-843f-8d8f93316e74",
+      "slug": "google-pixel-8-pro-4427",
+      "title": "Google Pixel 8 Pro",
+      "category_id": "b62f9783-0c8a-42d7-ba48-026a1a8c7099"
+    },
+    {
+      "id": "3b21cdd8-2705-47f7-9d64-c0fbc8829876",
+      "slug": "oneplus-12-4619",
+      "title": "OnePlus 12",
+      "category_id": "b62f9783-0c8a-42d7-ba48-026a1a8c7099"
+    },
+    {
+      "id": "fe6a53c6-d728-405d-bb99-b9940fef320a",
+      "slug": "motorola-edge-50-1774",
+      "title": "Motorola Edge 50",
+      "category_id": "b62f9783-0c8a-42d7-ba48-026a1a8c7099"
+    },
+    {
+      "id": "1d7337bd-8a3e-4fb0-b329-8d6cdc7d3de3",
+      "slug": "nothing-phone-1-4641",
+      "title": "Nothing Phone 1",
+      "category_id": "b62f9783-0c8a-42d7-ba48-026a1a8c7099"
+    },
+    {
+      "id": "770a72ad-e966-4236-b0b4-7deeba459c33",
+      "slug": "oppo-find-x7-7808",
+      "title": "Oppo Find X7",
+      "category_id": "b62f9783-0c8a-42d7-ba48-026a1a8c7099"
+    },
+    {
+      "id": "a48b630a-8947-46bc-b9b6-c2cc64a3642f",
+      "slug": "vivo-x100-8180",
+      "title": "Vivo X100",
+      "category_id": "b62f9783-0c8a-42d7-ba48-026a1a8c7099"
+    },
+    {
+      "id": "1499eae8-08db-405f-a01f-026ba5ceeeba",
+      "slug": "realme-12-pro-4039",
+      "title": "Realme 12 Pro+",
+      "category_id": "b62f9783-0c8a-42d7-ba48-026a1a8c7099"
+    },
+    {
+      "id": "865936b7-b266-422f-b61c-857a8381b772",
+      "slug": "macbook-pro-16-7244",
+      "title": "MacBook Pro 16\"",
+      "category_id": "9bd6b863-3ab4-4873-a2bb-c72ca97e5596"
+    },
+    {
+      "id": "7b923e86-9d20-4192-8bf8-488f46b1b211",
+      "slug": "dell-xps-15-3555",
+      "title": "Dell XPS 15",
+      "category_id": "9bd6b863-3ab4-4873-a2bb-c72ca97e5596"
+    },
+    {
+      "id": "ec8759da-cb7c-4ba5-a7e2-49d02e06dd29",
+      "slug": "hp-pavilion-15-1854",
+      "title": "HP Pavilion 15",
+      "category_id": "9bd6b863-3ab4-4873-a2bb-c72ca97e5596"
+    },
+    {
+      "id": "6ee850fc-b99f-4812-b505-7ae246f89d52",
+      "slug": "lenovo-thinkbook-16-9059",
+      "title": "Lenovo ThinkBook 16",
+      "category_id": "9bd6b863-3ab4-4873-a2bb-c72ca97e5596"
+    },
+    {
+      "id": "e56b5b5a-23b4-45d7-8771-19eb3d47d45e",
+      "slug": "asus-vivobook-15-4929",
+      "title": "ASUS VivoBook 15",
+      "category_id": "9bd6b863-3ab4-4873-a2bb-c72ca97e5596"
+    },
+    {
+      "id": "8d3150c0-f92f-4d44-9ab8-5c207cf72f65",
+      "slug": "msi-gf65-gaming-3690",
+      "title": "MSI GF65 Gaming",
+      "category_id": "9bd6b863-3ab4-4873-a2bb-c72ca97e5596"
+    },
+    {
+      "id": "e0e44aab-c4d9-41b1-a5de-22156f33a90a",
+      "slug": "acer-aspire-5-4671",
+      "title": "Acer Aspire 5",
+      "category_id": "9bd6b863-3ab4-4873-a2bb-c72ca97e5596"
+    },
+    {
+      "id": "4f974d21-5e69-43a6-8488-6beea2003ca1",
+      "slug": "rog-gaming-laptop-9012",
+      "title": "ROG Gaming Laptop",
+      "category_id": "9bd6b863-3ab4-4873-a2bb-c72ca97e5596"
+    },
+    {
+      "id": "0b2fa05f-d4f0-4196-a05d-f271e516c010",
+      "slug": "surface-laptop-studio-8154",
+      "title": "Surface Laptop Studio",
+      "category_id": "9bd6b863-3ab4-4873-a2bb-c72ca97e5596"
+    },
+    {
+      "id": "32f33abf-599a-4207-a78c-5e9dfa400cdf",
+      "slug": "razer-blade-15-9099",
+      "title": "Razer Blade 15",
+      "category_id": "9bd6b863-3ab4-4873-a2bb-c72ca97e5596"
+    },
+    {
+      "id": "7c866e28-3cd4-42cf-b541-8a986966543e",
+      "slug": "casual-cotton-t-shirt-8599",
+      "title": "Casual Cotton T-Shirt",
+      "category_id": "eae07e62-3db7-4a83-b974-72d128f68560"
+    },
+    {
+      "id": "82a1facc-581e-4e67-83dc-05f75f436701",
+      "slug": "oxford-button-dress-shirt-7055",
+      "title": "Oxford Button Dress Shirt",
+      "category_id": "eae07e62-3db7-4a83-b974-72d128f68560"
+    },
+    {
+      "id": "4a859cbb-9f38-4849-85fe-5c4e06ef8e2d",
+      "slug": "wool-winter-coat-2557",
+      "title": "Wool Winter Coat",
+      "category_id": "eae07e62-3db7-4a83-b974-72d128f68560"
+    },
+    {
+      "id": "9058ecdb-9cdb-4aef-919e-67a338b27851",
+      "slug": "denim-jeans-classic-4471",
+      "title": "Denim Jeans Classic",
+      "category_id": "eae07e62-3db7-4a83-b974-72d128f68560"
+    },
+    {
+      "id": "9a4b4957-3f8f-4e15-ab7f-73bdd777c19b",
+      "slug": "polo-shirt-premium-4717",
+      "title": "Polo Shirt Premium",
+      "category_id": "eae07e62-3db7-4a83-b974-72d128f68560"
+    },
+    {
+      "id": "5ac8ee5c-f69a-49f8-94c4-e895800e3dae",
+      "slug": "linen-summer-shirt-3795",
+      "title": "Linen Summer Shirt",
+      "category_id": "eae07e62-3db7-4a83-b974-72d128f68560"
+    },
+    {
+      "id": "c60812df-2314-45ba-8295-9bdc9df28385",
+      "slug": "cardigan-sweater-1993",
+      "title": "Cardigan Sweater",
+      "category_id": "eae07e62-3db7-4a83-b974-72d128f68560"
+    },
+    {
+      "id": "70794a59-79ec-4996-87b3-2d2ad6844621",
+      "slug": "henley-shirt-1827",
+      "title": "Henley Shirt",
+      "category_id": "eae07e62-3db7-4a83-b974-72d128f68560"
+    },
+    {
+      "id": "f417b0d0-df6e-46c1-a3fe-ff2c8ef5ba66",
+      "slug": "bomber-jacket-8463",
+      "title": "Bomber Jacket",
+      "category_id": "eae07e62-3db7-4a83-b974-72d128f68560"
+    },
+    {
+      "id": "2a4b4677-ecdb-4cc2-978f-eadf39fdb614",
+      "slug": "sports-shorts-1926",
+      "title": "Sports Shorts",
+      "category_id": "eae07e62-3db7-4a83-b974-72d128f68560"
+    },
+    {
+      "id": "36c98b33-b653-48d3-8752-3df0802fb956",
+      "slug": "summer-dress-floral-1787",
+      "title": "Summer Dress Floral",
+      "category_id": "fde43b82-edc8-4804-a234-4498fd15a58f"
+    },
+    {
+      "id": "55b7612c-d5a2-4557-816e-ecb135b0c89a",
+      "slug": "elegant-black-blazer-7228",
+      "title": "Elegant Black Blazer",
+      "category_id": "fde43b82-edc8-4804-a234-4498fd15a58f"
+    },
+    {
+      "id": "53d59d56-6283-40b3-8c8c-8938ef9c7c7c",
+      "slug": "skinny-jeans-blue-9556",
+      "title": "Skinny Jeans Blue",
+      "category_id": "fde43b82-edc8-4804-a234-4498fd15a58f"
+    },
+    {
+      "id": "e0af33a2-ed20-49a7-9f77-590b41daba4a",
+      "slug": "cashmere-sweater-4321",
+      "title": "Cashmere Sweater",
+      "category_id": "fde43b82-edc8-4804-a234-4498fd15a58f"
+    },
+    {
+      "id": "520b46f1-e0e8-4d1e-8b5e-b5b88813cb18",
+      "slug": "silk-blouse-white-7167",
+      "title": "Silk Blouse White",
+      "category_id": "fde43b82-edc8-4804-a234-4498fd15a58f"
+    },
+    {
+      "id": "c7e8156f-d9da-4560-84b5-cca7fa2fdcd3",
+      "slug": "leather-jacket-5300",
+      "title": "Leather Jacket",
+      "category_id": "fde43b82-edc8-4804-a234-4498fd15a58f"
+    },
+    {
+      "id": "3b997f84-d0c2-4a7d-b393-8a9cd4b7287c",
+      "slug": "maxi-skirt-6629",
+      "title": "Maxi Skirt",
+      "category_id": "fde43b82-edc8-4804-a234-4498fd15a58f"
+    },
+    {
+      "id": "221f7874-bafe-4a33-a69f-2270e0e6bf8b",
+      "slug": "tank-top-pack-6850",
+      "title": "Tank Top Pack",
+      "category_id": "fde43b82-edc8-4804-a234-4498fd15a58f"
+    },
+    {
+      "id": "f66a9f59-b196-4081-8ad0-f3b992d045a2",
+      "slug": "denim-shorts-8704",
+      "title": "Denim Shorts",
+      "category_id": "fde43b82-edc8-4804-a234-4498fd15a58f"
+    },
+    {
+      "id": "57b46b3b-769f-4f96-8f99-64806c258c8f",
+      "slug": "winter-coat-4149",
+      "title": "Winter Coat",
+      "category_id": "fde43b82-edc8-4804-a234-4498fd15a58f"
+    },
+    {
+      "id": "aa71488a-eca9-4525-9946-6bcc5099dc11",
+      "slug": "running-shoes-air-max-7846",
+      "title": "Running Shoes Air Max",
+      "category_id": "7a5b3a2a-5fed-4354-8a06-d0ae2d2fba42"
+    },
+    {
+      "id": "d85012cb-9de9-4e8c-9630-84f4293ab2ec",
+      "slug": "leather-dress-shoes-8620",
+      "title": "Leather Dress Shoes",
+      "category_id": "7a5b3a2a-5fed-4354-8a06-d0ae2d2fba42"
+    },
+    {
+      "id": "b386ba3c-8ffc-4561-bd66-f8d8a82b40a1",
+      "slug": "sneakers-white-classic-1451",
+      "title": "Sneakers White Classic",
+      "category_id": "7a5b3a2a-5fed-4354-8a06-d0ae2d2fba42"
+    },
+    {
+      "id": "57bcfa1a-9f73-427e-b083-39f9bc0a5080",
+      "slug": "hiking-boots-waterproof-6965",
+      "title": "Hiking Boots Waterproof",
+      "category_id": "7a5b3a2a-5fed-4354-8a06-d0ae2d2fba42"
+    },
+    {
+      "id": "165c7b9a-005d-4d88-b907-eb88519a659a",
+      "slug": "casual-loafers-6467",
+      "title": "Casual Loafers",
+      "category_id": "7a5b3a2a-5fed-4354-8a06-d0ae2d2fba42"
+    },
+    {
+      "id": "d16fee7d-cce7-4698-bd54-b5228ef91779",
+      "slug": "basketball-shoes-6518",
+      "title": "Basketball Shoes",
+      "category_id": "7a5b3a2a-5fed-4354-8a06-d0ae2d2fba42"
+    },
+    {
+      "id": "8ff939cd-4ddb-4ad3-909c-8ffb93a2b12b",
+      "slug": "flip-flops-comfort-9677",
+      "title": "Flip Flops Comfort",
+      "category_id": "7a5b3a2a-5fed-4354-8a06-d0ae2d2fba42"
+    },
+    {
+      "id": "3462a776-0d66-40e3-aef7-a0b1b112fe9e",
+      "slug": "formal-oxford-shoes-7019",
+      "title": "Formal Oxford Shoes",
+      "category_id": "7a5b3a2a-5fed-4354-8a06-d0ae2d2fba42"
+    },
+    {
+      "id": "0eda88ad-398c-4901-8660-208b7415e577",
+      "slug": "slip-on-shoes-2942",
+      "title": "Slip-on Shoes",
+      "category_id": "7a5b3a2a-5fed-4354-8a06-d0ae2d2fba42"
+    },
+    {
+      "id": "4d89cb70-aa76-4d26-b926-c3d623711a18",
+      "slug": "gym-training-shoes-8647",
+      "title": "Gym Training Shoes",
+      "category_id": "7a5b3a2a-5fed-4354-8a06-d0ae2d2fba42"
+    },
+    {
+      "id": "af6b7691-bf53-41a3-9faa-05e8bc454e48",
+      "slug": "leather-sofa-3-seater-8002",
+      "title": "Leather Sofa 3-Seater",
+      "category_id": "ba9540b6-a568-4810-89a8-cfe3d4ff0b4c"
+    },
+    {
+      "id": "c67054bf-0fb4-4522-8983-125bb38632be",
+      "slug": "wooden-dining-table-7705",
+      "title": "Wooden Dining Table",
+      "category_id": "ba9540b6-a568-4810-89a8-cfe3d4ff0b4c"
+    },
+    {
+      "id": "d4a48c5f-1a56-4976-a0a1-cd1c70e8d86d",
+      "slug": "metal-office-chair-5669",
+      "title": "Metal Office Chair",
+      "category_id": "ba9540b6-a568-4810-89a8-cfe3d4ff0b4c"
+    },
+    {
+      "id": "91773d8d-08cc-403b-9711-6b5b0bf9c7cb",
+      "slug": "queen-bed-frame-2328",
+      "title": "Queen Bed Frame",
+      "category_id": "ba9540b6-a568-4810-89a8-cfe3d4ff0b4c"
+    },
+    {
+      "id": "40ab986d-3cae-439b-88bc-8bf5367ab804",
+      "slug": "bookshelf-cabinet-1947",
+      "title": "Bookshelf Cabinet",
+      "category_id": "ba9540b6-a568-4810-89a8-cfe3d4ff0b4c"
+    },
+    {
+      "id": "c6d484a8-9325-4d26-8813-277982fcf867",
+      "slug": "coffee-table-modern-8090",
+      "title": "Coffee Table Modern",
+      "category_id": "ba9540b6-a568-4810-89a8-cfe3d4ff0b4c"
+    },
+    {
+      "id": "50f5fd8d-9e4c-430c-b62d-4b96ec2959b2",
+      "slug": "wall-mounted-shelf-3021",
+      "title": "Wall Mounted Shelf",
+      "category_id": "ba9540b6-a568-4810-89a8-cfe3d4ff0b4c"
+    },
+    {
+      "id": "1ffb8d3e-6b55-42da-bd3e-be7c399bf8fc",
+      "slug": "desk-lamp-4159",
+      "title": "Desk Lamp",
+      "category_id": "ba9540b6-a568-4810-89a8-cfe3d4ff0b4c"
+    },
+    {
+      "id": "5c4c290e-2c61-4f1c-b3a8-cef9123b374a",
+      "slug": "area-rug-9565",
+      "title": "Area Rug",
+      "category_id": "ba9540b6-a568-4810-89a8-cfe3d4ff0b4c"
+    },
+    {
+      "id": "7b2efdea-64a1-4b49-8852-97829f1915c2",
+      "slug": "storage-ottoman-4031",
+      "title": "Storage Ottoman",
+      "category_id": "ba9540b6-a568-4810-89a8-cfe3d4ff0b4c"
+    },
+    {
+      "id": "4ef2bef2-2805-4607-89d5-ea9a10603d4e",
+      "slug": "stainless-steel-coffee-maker-5642",
+      "title": "Stainless Steel Coffee Maker",
+      "category_id": "6636c619-9517-4e0e-afdc-b01cb1ee13be"
+    },
+    {
+      "id": "252b1c5b-3cba-4f30-8e5a-25262609c567",
+      "slug": "digital-air-fryer-4806",
+      "title": "Digital Air Fryer",
+      "category_id": "6636c619-9517-4e0e-afdc-b01cb1ee13be"
+    },
+    {
+      "id": "e2c95728-7f02-4daf-b0da-eb358b41d3ab",
+      "slug": "microwave-oven-1951",
+      "title": "Microwave Oven",
+      "category_id": "6636c619-9517-4e0e-afdc-b01cb1ee13be"
+    },
+    {
+      "id": "27635ef5-f542-4f76-a701-4b32351a56a1",
+      "slug": "electric-kettle-7693",
+      "title": "Electric Kettle",
+      "category_id": "6636c619-9517-4e0e-afdc-b01cb1ee13be"
+    },
+    {
+      "id": "e6b21a47-7d79-4c50-88af-1e7a0b485503",
+      "slug": "blender-smoothie-maker-7801",
+      "title": "Blender Smoothie Maker",
+      "category_id": "6636c619-9517-4e0e-afdc-b01cb1ee13be"
+    },
+    {
+      "id": "0d610963-a8d4-47d9-a0a9-20dd0c516be8",
+      "slug": "toaster-4-slice-6739",
+      "title": "Toaster 4 Slice",
+      "category_id": "6636c619-9517-4e0e-afdc-b01cb1ee13be"
+    },
+    {
+      "id": "8219eb1e-f792-4a18-b7c9-9a90728c85ef",
+      "slug": "food-processor-2691",
+      "title": "Food Processor",
+      "category_id": "6636c619-9517-4e0e-afdc-b01cb1ee13be"
+    },
+    {
+      "id": "86d4071c-b47e-4bfb-9427-5cbf7b847747",
+      "slug": "rice-cooker-9491",
+      "title": "Rice Cooker",
+      "category_id": "6636c619-9517-4e0e-afdc-b01cb1ee13be"
+    },
+    {
+      "id": "ad8e4c89-61dd-4e85-adcb-afefd57934ef",
+      "slug": "electric-mixer-3850",
+      "title": "Electric Mixer",
+      "category_id": "6636c619-9517-4e0e-afdc-b01cb1ee13be"
+    },
+    {
+      "id": "ff81d8e2-32d5-43f5-b9ae-9cc843628e3a",
+      "slug": "juicer-fresh-2480",
+      "title": "Juicer Fresh",
+      "category_id": "6636c619-9517-4e0e-afdc-b01cb1ee13be"
+    },
+    {
+      "id": "b1fa1f9d-6896-4766-9549-492bd29e08ce",
+      "slug": "egyptian-cotton-bed-sheets-9112",
+      "title": "Egyptian Cotton Bed Sheets",
+      "category_id": "2e53fc83-e92b-478d-a157-7d94d5da7369"
+    },
+    {
+      "id": "23511433-ce09-448a-8d1c-a8d1a0f23a65",
+      "slug": "memory-foam-pillow-9415",
+      "title": "Memory Foam Pillow",
+      "category_id": "2e53fc83-e92b-478d-a157-7d94d5da7369"
+    },
+    {
+      "id": "ff4650c7-22b8-4632-baf4-d3db9a2fe0f3",
+      "slug": "comforter-set-queen-2114",
+      "title": "Comforter Set Queen",
+      "category_id": "2e53fc83-e92b-478d-a157-7d94d5da7369"
+    },
+    {
+      "id": "419f33e8-1757-426d-99a3-0bcefef938ff",
+      "slug": "mattress-protector-4066",
+      "title": "Mattress Protector",
+      "category_id": "2e53fc83-e92b-478d-a157-7d94d5da7369"
+    },
+    {
+      "id": "14b26399-9544-497b-988b-648d5b5c38af",
+      "slug": "duvet-cover-set-1777",
+      "title": "Duvet Cover Set",
+      "category_id": "2e53fc83-e92b-478d-a157-7d94d5da7369"
+    },
+    {
+      "id": "cf2782b7-2f57-4fcd-bb73-06bd7d2ede3c",
+      "slug": "pillow-cases-pack-1653",
+      "title": "Pillow Cases Pack",
+      "category_id": "2e53fc83-e92b-478d-a157-7d94d5da7369"
+    },
+    {
+      "id": "8797a1c5-4982-4a8c-95b9-546f1edfb8f9",
+      "slug": "fleece-blanket-4256",
+      "title": "Fleece Blanket",
+      "category_id": "2e53fc83-e92b-478d-a157-7d94d5da7369"
+    },
+    {
+      "id": "66ffe4bd-caa5-4595-8c65-34c2213b02aa",
+      "slug": "bed-skirt-4093",
+      "title": "Bed Skirt",
+      "category_id": "2e53fc83-e92b-478d-a157-7d94d5da7369"
+    },
+    {
+      "id": "64469399-2209-42d4-9370-f62eb49510ff",
+      "slug": "throw-pillows-1465",
+      "title": "Throw Pillows",
+      "category_id": "2e53fc83-e92b-478d-a157-7d94d5da7369"
+    },
+    {
+      "id": "51246e71-8b52-45ed-a89d-b6fd3e413172",
+      "slug": "waterproof-mattress-cover-4861",
+      "title": "Waterproof Mattress Cover",
+      "category_id": "2e53fc83-e92b-478d-a157-7d94d5da7369"
+    },
+    {
+      "id": "4c95ece6-3ead-48ee-917f-c70b2f58e0f5",
+      "slug": "adjustable-dumbbells-set-7415",
+      "title": "Adjustable Dumbbells Set",
+      "category_id": "1c3e19cb-0c03-48de-b8e9-2e962a5d364a"
+    },
+    {
+      "id": "883e7a60-ca67-481b-ba0a-68633ae4e623",
+      "slug": "yoga-mat-non-slip-6091",
+      "title": "Yoga Mat Non-Slip",
+      "category_id": "1c3e19cb-0c03-48de-b8e9-2e962a5d364a"
+    },
+    {
+      "id": "3347c348-da49-4fd3-a23c-cef2eef382e1",
+      "slug": "resistance-bands-set-4081",
+      "title": "Resistance Bands Set",
+      "category_id": "1c3e19cb-0c03-48de-b8e9-2e962a5d364a"
+    },
+    {
+      "id": "9c903804-8c56-46c3-a271-6bfdfcef582f",
+      "slug": "treadmill-folding-8277",
+      "title": "Treadmill Folding",
+      "category_id": "1c3e19cb-0c03-48de-b8e9-2e962a5d364a"
+    },
+    {
+      "id": "2f0a2617-5287-4746-b853-c91d1b5d2a70",
+      "slug": "push-up-handles-5787",
+      "title": "Push Up Handles",
+      "category_id": "1c3e19cb-0c03-48de-b8e9-2e962a5d364a"
+    },
+    {
+      "id": "b068488f-5fd3-4972-b87d-5a109123c163",
+      "slug": "kettlebell-20kg-7316",
+      "title": "Kettlebell 20kg",
+      "category_id": "1c3e19cb-0c03-48de-b8e9-2e962a5d364a"
+    },
+    {
+      "id": "32e672e6-23e0-4504-b52c-27651aa06107",
+      "slug": "gym-equipment-4566",
+      "title": "Gym Equipment",
+      "category_id": "1c3e19cb-0c03-48de-b8e9-2e962a5d364a"
+    },
+    {
+      "id": "39b19a7d-0f45-45bd-9e06-d1c48d9020e5",
+      "slug": "protein-shaker-5898",
+      "title": "Protein Shaker",
+      "category_id": "1c3e19cb-0c03-48de-b8e9-2e962a5d364a"
+    },
+    {
+      "id": "fb869591-4db1-439b-816b-1b23429f3e76",
+      "slug": "jump-rope-7114",
+      "title": "Jump Rope",
+      "category_id": "1c3e19cb-0c03-48de-b8e9-2e962a5d364a"
+    },
+    {
+      "id": "864dd653-7fc3-4db6-880e-0d6891d2bc55",
+      "slug": "weight-bench-9586",
+      "title": "Weight Bench",
+      "category_id": "1c3e19cb-0c03-48de-b8e9-2e962a5d364a"
+    },
+    {
+      "id": "284ec898-d706-49e2-a99e-f722f2bab691",
+      "slug": "camping-tent-4-person-8281",
+      "title": "Camping Tent 4-Person",
+      "category_id": "771c716e-b0e9-4504-a3ec-ca5fe3cb03d2"
+    },
+    {
+      "id": "24556c07-2dcd-4a3a-8e8a-83b089bc799a",
+      "slug": "hiking-backpack-60l-8894",
+      "title": "Hiking Backpack 60L",
+      "category_id": "771c716e-b0e9-4504-a3ec-ca5fe3cb03d2"
+    },
+    {
+      "id": "f544c86c-e2b6-4914-a78e-eb51d6f6263d",
+      "slug": "sleeping-bag-winter-1923",
+      "title": "Sleeping Bag Winter",
+      "category_id": "771c716e-b0e9-4504-a3ec-ca5fe3cb03d2"
+    },
+    {
+      "id": "7deb8efc-27ca-48c5-abac-6a19a4116b49",
+      "slug": "portable-bbq-grill-7313",
+      "title": "Portable BBQ Grill",
+      "category_id": "771c716e-b0e9-4504-a3ec-ca5fe3cb03d2"
+    },
+    {
+      "id": "ea536a2d-22a2-47c1-bf85-0b3b5120fe9e",
+      "slug": "camping-lantern-led-4654",
+      "title": "Camping Lantern LED",
+      "category_id": "771c716e-b0e9-4504-a3ec-ca5fe3cb03d2"
+    },
+    {
+      "id": "9cf9fb7a-2522-49e6-a3b7-5a166a1bb80e",
+      "slug": "hiking-poles-2409",
+      "title": "Hiking Poles",
+      "category_id": "771c716e-b0e9-4504-a3ec-ca5fe3cb03d2"
+    },
+    {
+      "id": "d617dd5a-f31b-46fb-9ac4-7aa1b39d5aa7",
+      "slug": "waterproof-backpack-9672",
+      "title": "Waterproof Backpack",
+      "category_id": "771c716e-b0e9-4504-a3ec-ca5fe3cb03d2"
+    },
+    {
+      "id": "4dfbe988-3287-4c79-ba7e-74cac168cc9f",
+      "slug": "tent-floor-mat-9961",
+      "title": "Tent Floor Mat",
+      "category_id": "771c716e-b0e9-4504-a3ec-ca5fe3cb03d2"
+    },
+    {
+      "id": "951dbdc4-3e07-4f6c-acfc-c1fd06f29581",
+      "slug": "camp-chair-9951",
+      "title": "Camp Chair",
+      "category_id": "771c716e-b0e9-4504-a3ec-ca5fe3cb03d2"
+    },
+    {
+      "id": "1e618dfe-a301-4b15-98c5-6654543639e4",
+      "slug": "emergency-survival-kit-3120",
+      "title": "Emergency Survival Kit",
+      "category_id": "771c716e-b0e9-4504-a3ec-ca5fe3cb03d2"
+    },
+    {
+      "id": "283b1ef5-ee01-48a7-9504-6939812fa427",
+      "slug": "dummy-category-1-product-1-5839",
+      "title": "Dummy Category 1 Product 1",
+      "category_id": "d5116bd9-fd7e-43d5-b105-4dbe9ae37a55"
+    },
+    {
+      "id": "b58d3b58-c555-4864-9152-924d8e3b1d4b",
+      "slug": "dummy-category-1-product-2-2650",
+      "title": "Dummy Category 1 Product 2",
+      "category_id": "d5116bd9-fd7e-43d5-b105-4dbe9ae37a55"
+    },
+    {
+      "id": "21261621-2d3e-426f-8a5e-fa5b5acd91c9",
+      "slug": "dummy-category-1-product-3-4963",
+      "title": "Dummy Category 1 Product 3",
+      "category_id": "d5116bd9-fd7e-43d5-b105-4dbe9ae37a55"
+    },
+    {
+      "id": "8e55e4c2-ce01-4d0d-acbb-73fa7507689b",
+      "slug": "dummy-category-1-product-4-4382",
+      "title": "Dummy Category 1 Product 4",
+      "category_id": "d5116bd9-fd7e-43d5-b105-4dbe9ae37a55"
+    },
+    {
+      "id": "43bed2fa-79c8-42fa-ade6-44df6497524b",
+      "slug": "dummy-category-1-product-5-6595",
+      "title": "Dummy Category 1 Product 5",
+      "category_id": "d5116bd9-fd7e-43d5-b105-4dbe9ae37a55"
+    },
+    {
+      "id": "32e8d0cf-ac37-4a49-9046-30f90ae60a7a",
+      "slug": "dummy-category-1-product-6-7621",
+      "title": "Dummy Category 1 Product 6",
+      "category_id": "d5116bd9-fd7e-43d5-b105-4dbe9ae37a55"
+    },
+    {
+      "id": "99c6c4b7-b49a-426d-8915-aa6a1e57edff",
+      "slug": "dummy-category-1-product-7-9882",
+      "title": "Dummy Category 1 Product 7",
+      "category_id": "d5116bd9-fd7e-43d5-b105-4dbe9ae37a55"
+    },
+    {
+      "id": "e37badf0-8246-40fa-8fd7-fe416515d4ac",
+      "slug": "dummy-category-1-product-8-5813",
+      "title": "Dummy Category 1 Product 8",
+      "category_id": "d5116bd9-fd7e-43d5-b105-4dbe9ae37a55"
+    },
+    {
+      "id": "9302a14d-2c53-43a0-b20b-8d202386b820",
+      "slug": "dummy-category-1-product-9-5659",
+      "title": "Dummy Category 1 Product 9",
+      "category_id": "d5116bd9-fd7e-43d5-b105-4dbe9ae37a55"
+    },
+    {
+      "id": "b52fec93-d688-485c-82e0-1f62c7c486c8",
+      "slug": "dummy-category-1-product-10-9067",
+      "title": "Dummy Category 1 Product 10",
+      "category_id": "d5116bd9-fd7e-43d5-b105-4dbe9ae37a55"
+    },
+    {
+      "id": "3f2e5f5e-9c17-4c59-bd80-32cbe970ea71",
+      "slug": "dummy-category-2-product-1-8344",
+      "title": "Dummy Category 2 Product 1",
+      "category_id": "a6718df5-90bd-41f2-b940-ea84c2ef7e06"
+    },
+    {
+      "id": "942b4774-3fe9-4d8e-a214-7ff22955a68c",
+      "slug": "dummy-category-2-product-2-3788",
+      "title": "Dummy Category 2 Product 2",
+      "category_id": "a6718df5-90bd-41f2-b940-ea84c2ef7e06"
+    },
+    {
+      "id": "0c032676-8f4d-48ce-9156-e5f69e321926",
+      "slug": "dummy-category-2-product-3-4866",
+      "title": "Dummy Category 2 Product 3",
+      "category_id": "a6718df5-90bd-41f2-b940-ea84c2ef7e06"
+    },
+    {
+      "id": "7963013b-564b-404f-a776-e4dccb6e0a3f",
+      "slug": "dummy-category-2-product-4-6513",
+      "title": "Dummy Category 2 Product 4",
+      "category_id": "a6718df5-90bd-41f2-b940-ea84c2ef7e06"
+    },
+    {
+      "id": "a0552164-5912-4b7b-a435-b49bc83243d4",
+      "slug": "dummy-category-2-product-5-9938",
+      "title": "Dummy Category 2 Product 5",
+      "category_id": "a6718df5-90bd-41f2-b940-ea84c2ef7e06"
+    },
+    {
+      "id": "a80b8e81-fc8e-4f34-810e-5ee5fc3350d1",
+      "slug": "dummy-category-2-product-6-9283",
+      "title": "Dummy Category 2 Product 6",
+      "category_id": "a6718df5-90bd-41f2-b940-ea84c2ef7e06"
+    },
+    {
+      "id": "ccbea6d1-64c8-4d24-99f9-376e2ee0dfee",
+      "slug": "dummy-category-2-product-7-9341",
+      "title": "Dummy Category 2 Product 7",
+      "category_id": "a6718df5-90bd-41f2-b940-ea84c2ef7e06"
+    },
+    {
+      "id": "605325fb-c120-493b-889c-9d0bc6ff09ef",
+      "slug": "dummy-category-2-product-8-3313",
+      "title": "Dummy Category 2 Product 8",
+      "category_id": "a6718df5-90bd-41f2-b940-ea84c2ef7e06"
+    },
+    {
+      "id": "8aecaa83-e189-40fa-ad32-673a88d71a7f",
+      "slug": "dummy-category-2-product-9-9115",
+      "title": "Dummy Category 2 Product 9",
+      "category_id": "a6718df5-90bd-41f2-b940-ea84c2ef7e06"
+    },
+    {
+      "id": "5bd423b6-6b1e-41b5-9ec5-b2886e751536",
+      "slug": "dummy-category-2-product-10-6847",
+      "title": "Dummy Category 2 Product 10",
+      "category_id": "a6718df5-90bd-41f2-b940-ea84c2ef7e06"
+    },
+    {
+      "id": "415519a3-1187-4a56-ab5a-e0ff8db42fa3",
+      "slug": "dummy-category-3-product-1-3124",
+      "title": "Dummy Category 3 Product 1",
+      "category_id": "ecf307b5-9530-41b5-a869-8f799cd743b7"
+    },
+    {
+      "id": "954e6619-583f-47f0-9132-4ac91e4e6ffb",
+      "slug": "dummy-category-3-product-2-3417",
+      "title": "Dummy Category 3 Product 2",
+      "category_id": "ecf307b5-9530-41b5-a869-8f799cd743b7"
+    },
+    {
+      "id": "25bc2c26-d283-4ce3-8ad3-73ecf55d1ac2",
+      "slug": "dummy-category-3-product-3-8312",
+      "title": "Dummy Category 3 Product 3",
+      "category_id": "ecf307b5-9530-41b5-a869-8f799cd743b7"
+    },
+    {
+      "id": "85b9a1a6-61be-434b-b659-1612cf8352cb",
+      "slug": "dummy-category-3-product-4-5974",
+      "title": "Dummy Category 3 Product 4",
+      "category_id": "ecf307b5-9530-41b5-a869-8f799cd743b7"
+    },
+    {
+      "id": "43e68823-7f83-4e66-a1f2-fd3717ab6e06",
+      "slug": "dummy-category-3-product-5-6265",
+      "title": "Dummy Category 3 Product 5",
+      "category_id": "ecf307b5-9530-41b5-a869-8f799cd743b7"
+    },
+    {
+      "id": "5cc5dd6c-230f-46c2-ba86-ed11a611dfc4",
+      "slug": "dummy-category-3-product-6-3273",
+      "title": "Dummy Category 3 Product 6",
+      "category_id": "ecf307b5-9530-41b5-a869-8f799cd743b7"
+    },
+    {
+      "id": "68b2378b-6066-4a34-80a0-106f7e93f1b3",
+      "slug": "dummy-category-3-product-7-1422",
+      "title": "Dummy Category 3 Product 7",
+      "category_id": "ecf307b5-9530-41b5-a869-8f799cd743b7"
+    },
+    {
+      "id": "bbc6c93b-bd88-445f-98c3-71fa870b2a65",
+      "slug": "dummy-category-3-product-8-9360",
+      "title": "Dummy Category 3 Product 8",
+      "category_id": "ecf307b5-9530-41b5-a869-8f799cd743b7"
+    },
+    {
+      "id": "be65fea6-0e90-4a6b-ba38-bcd71db193eb",
+      "slug": "dummy-category-3-product-9-4536",
+      "title": "Dummy Category 3 Product 9",
+      "category_id": "ecf307b5-9530-41b5-a869-8f799cd743b7"
+    },
+    {
+      "id": "cd8de8a6-e095-4991-8849-dc7617507ca5",
+      "slug": "dummy-category-3-product-10-8886",
+      "title": "Dummy Category 3 Product 10",
+      "category_id": "ecf307b5-9530-41b5-a869-8f799cd743b7"
+    },
+    {
+      "id": "6985befe-3de2-4a56-82e2-653ec0e6f4fb",
+      "slug": "dummy-category-4-product-1-5281",
+      "title": "Dummy Category 4 Product 1",
+      "category_id": "5714a4f0-881e-4b28-9cbb-46e8bf8bbdbf"
+    },
+    {
+      "id": "83f4a880-f6ed-4f0f-a5a1-df225002d23f",
+      "slug": "dummy-category-4-product-2-4238",
+      "title": "Dummy Category 4 Product 2",
+      "category_id": "5714a4f0-881e-4b28-9cbb-46e8bf8bbdbf"
+    },
+    {
+      "id": "d8d6b640-ba9b-45d4-b178-314190c1f2b8",
+      "slug": "dummy-category-4-product-3-6987",
+      "title": "Dummy Category 4 Product 3",
+      "category_id": "5714a4f0-881e-4b28-9cbb-46e8bf8bbdbf"
+    },
+    {
+      "id": "d0666d0a-96de-4604-915d-0a85e56ca8bc",
+      "slug": "dummy-category-4-product-4-5700",
+      "title": "Dummy Category 4 Product 4",
+      "category_id": "5714a4f0-881e-4b28-9cbb-46e8bf8bbdbf"
+    },
+    {
+      "id": "a29e315c-e907-4d04-99de-ba35752e7eed",
+      "slug": "dummy-category-4-product-5-4140",
+      "title": "Dummy Category 4 Product 5",
+      "category_id": "5714a4f0-881e-4b28-9cbb-46e8bf8bbdbf"
+    },
+    {
+      "id": "37a6d932-76ce-403c-96dc-e195c09c6202",
+      "slug": "dummy-category-4-product-6-3407",
+      "title": "Dummy Category 4 Product 6",
+      "category_id": "5714a4f0-881e-4b28-9cbb-46e8bf8bbdbf"
+    },
+    {
+      "id": "d92d8019-117e-4277-b8af-dae8048d2bfc",
+      "slug": "dummy-category-4-product-7-9581",
+      "title": "Dummy Category 4 Product 7",
+      "category_id": "5714a4f0-881e-4b28-9cbb-46e8bf8bbdbf"
+    },
+    {
+      "id": "cbe7565d-ca07-4a2d-abf4-26a7d13d4dde",
+      "slug": "dummy-category-4-product-8-3440",
+      "title": "Dummy Category 4 Product 8",
+      "category_id": "5714a4f0-881e-4b28-9cbb-46e8bf8bbdbf"
+    },
+    {
+      "id": "347e05da-8307-4d12-9ed5-cd1c3c2a4822",
+      "slug": "dummy-category-4-product-9-1823",
+      "title": "Dummy Category 4 Product 9",
+      "category_id": "5714a4f0-881e-4b28-9cbb-46e8bf8bbdbf"
+    },
+    {
+      "id": "bf66d75b-41e0-4055-af64-c997a8a6ca04",
+      "slug": "dummy-category-4-product-10-4543",
+      "title": "Dummy Category 4 Product 10",
+      "category_id": "5714a4f0-881e-4b28-9cbb-46e8bf8bbdbf"
+    },
+    {
+      "id": "332babea-71d7-4a6d-80d2-6e95908aaa6e",
+      "slug": "dummy-category-5-product-1-2351",
+      "title": "Dummy Category 5 Product 1",
+      "category_id": "61e7b6c5-04fb-4346-bf9e-d83c093701c4"
+    },
+    {
+      "id": "dccdf452-563c-440c-843d-8fbe8a17c3e6",
+      "slug": "dummy-category-5-product-2-5341",
+      "title": "Dummy Category 5 Product 2",
+      "category_id": "61e7b6c5-04fb-4346-bf9e-d83c093701c4"
+    },
+    {
+      "id": "aa0dd987-80cf-40bb-bf23-70abb346b484",
+      "slug": "dummy-category-5-product-3-2122",
+      "title": "Dummy Category 5 Product 3",
+      "category_id": "61e7b6c5-04fb-4346-bf9e-d83c093701c4"
+    },
+    {
+      "id": "ba91f2c8-936b-4677-a16f-7978350aeed9",
+      "slug": "dummy-category-5-product-4-3811",
+      "title": "Dummy Category 5 Product 4",
+      "category_id": "61e7b6c5-04fb-4346-bf9e-d83c093701c4"
+    },
+    {
+      "id": "c448cfc9-7d4b-4f4f-bce7-d2151764ba96",
+      "slug": "dummy-category-5-product-5-8723",
+      "title": "Dummy Category 5 Product 5",
+      "category_id": "61e7b6c5-04fb-4346-bf9e-d83c093701c4"
+    },
+    {
+      "id": "94ce73d2-38bf-4fd2-9920-cbe873244a03",
+      "slug": "dummy-category-5-product-6-9200",
+      "title": "Dummy Category 5 Product 6",
+      "category_id": "61e7b6c5-04fb-4346-bf9e-d83c093701c4"
+    },
+    {
+      "id": "b657aa80-924f-4945-8260-79acbb94f69c",
+      "slug": "dummy-category-5-product-7-1480",
+      "title": "Dummy Category 5 Product 7",
+      "category_id": "61e7b6c5-04fb-4346-bf9e-d83c093701c4"
+    },
+    {
+      "id": "7c4f9688-b7d8-45fa-b367-393da703e593",
+      "slug": "dummy-category-5-product-8-7901",
+      "title": "Dummy Category 5 Product 8",
+      "category_id": "61e7b6c5-04fb-4346-bf9e-d83c093701c4"
+    },
+    {
+      "id": "76eef048-b12b-4d65-bc0b-69685dfca22f",
+      "slug": "dummy-category-5-product-9-7595",
+      "title": "Dummy Category 5 Product 9",
+      "category_id": "61e7b6c5-04fb-4346-bf9e-d83c093701c4"
+    },
+    {
+      "id": "abdace8c-9af7-42e5-bed4-e1a80f2b4d8d",
+      "slug": "dummy-category-5-product-10-9174",
+      "title": "Dummy Category 5 Product 10",
+      "category_id": "61e7b6c5-04fb-4346-bf9e-d83c093701c4"
+    }
+  ]
+}

@@ -1,46 +1,58 @@
-from rest_framework import viewsets, status
-from rest_framework.decorators import action
-from rest_framework.response import Response
+from django.shortcuts import get_object_or_404
+from rest_framework import generics, status
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
 from shared.permissions import IsOwnerOrAdmin
 from .models import Review
 from .serializers import ReviewSerializer
-from drf_spectacular.utils import extend_schema, extend_schema_view
 
 
-@extend_schema_view(
-    list=extend_schema(description="Tasdiqlangan sharhlar ro'yxati (o'zinikini ham ko'radi)."),
-    create=extend_schema(description="Yangi sharh qoldirish."),
-    retrieve=extend_schema(description="Bitta sharh."),
-    update=extend_schema(description="Sharhni yangilash (egasi yoki admin)."),
-    partial_update=extend_schema(description="Sharhni qisman yangilash."),
-    destroy=extend_schema(description="Sharhni o'chirish (egasi yoki admin)."),
-)
-class ReviewViewSet(viewsets.ModelViewSet):
+class ReviewListCreateView(generics.ListCreateAPIView):
     serializer_class = ReviewSerializer
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        if self.request.user.is_authenticated and self.request.user.user_role == "admin":
+        if self.request.user.user_role == "admin":
             return Review.objects.all()
-        base = Review.objects.filter(is_approved=True)
-        if self.request.user.is_authenticated:
-            base = base | Review.objects.filter(user=self.request.user)
-        return base.distinct()
+
+        approved_reviews = Review.objects.filter(is_approved=True)
+        my_reviews = Review.objects.filter(user=self.request.user)
+        return (approved_reviews | my_reviews).distinct()
+
+
+class ReviewDetailView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = ReviewSerializer
+
+    def get_queryset(self):
+        if self.request.user.user_role == "admin":
+            return Review.objects.all()
+
+        approved_reviews = Review.objects.filter(is_approved=True)
+        my_reviews = Review.objects.filter(user=self.request.user)
+        return (approved_reviews | my_reviews).distinct()
 
     def get_permissions(self):
-        if self.action in ["update", "partial_update", "destroy"]:
-            self.permission_classes = [IsAuthenticated, IsOwnerOrAdmin]
-        else:
-            self.permission_classes = [IsAuthenticated]
-        return super().get_permissions()
+        if self.request.method in ["PUT", "PATCH", "DELETE"]:
+            return [IsAuthenticated(), IsOwnerOrAdmin()]
+        return [IsAuthenticated()]
 
-    @extend_schema(description="Sharhni admin tomonidan tasdiqlash.")
-    @action(detail=True, methods=["post"])
-    def approve(self, request, pk=None):
-        review = self.get_object()
-        if not request.user.user_role == "admin":
-            return Response({"error": "Only admin can approve"}, status=403)
+
+class ReviewApproveView(APIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = ReviewSerializer
+
+    def post(self, request, pk):
+        if request.user.user_role != "admin":
+            return Response(
+                {"error": "Only admin can approve"},
+                status=status.HTTP_403_FORBIDDEN,
+            )
+
+        review = get_object_or_404(Review, pk=pk)
         review.is_approved = True
         review.save()
-        return Response(ReviewSerializer(review).data)
+
+        serializer = ReviewSerializer(review)
+        return Response(serializer.data)

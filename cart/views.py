@@ -5,14 +5,12 @@ from .models import Cart, CartItem
 from .serializers import CartSerializer, CartItemSerializer
 from product.models import Product
 from django.shortcuts import get_object_or_404
-from drf_spectacular.utils import extend_schema
 
 
 class CartRetrieveUpdateView(generics.RetrieveUpdateAPIView):
     serializer_class = CartSerializer
     permission_classes = [IsAuthenticated]
 
-    @extend_schema(description="Joriy foydalanuvchining savatini ko'rish.")
     def get(self, request, *args, **kwargs):
         return super().get(request, *args, **kwargs)
 
@@ -25,9 +23,6 @@ class AddToCartView(generics.CreateAPIView):
     serializer_class = CartItemSerializer
     permission_classes = [IsAuthenticated]
 
-    @extend_schema(
-        description="Savatga mahsulot qo'shish. Agar mavjud bo'lsa miqdori oshiriladi.",
-    )
     def post(self, request, *args, **kwargs):
         cart, _ = Cart.objects.get_or_create(user=request.user)
         product_id = request.data.get("product")

@@ -1,6 +1,9 @@
-from rest_framework.routers import DefaultRouter
-from .views import OrderViewSet
+from django.urls import path
+from .views import CheckoutView, OrderCancelView, OrderDetailView, OrderListView
 
-router = DefaultRouter()
-router.register(r"", OrderViewSet, basename="order")
-urlpatterns = router.urls
+urlpatterns = [
+    path("", OrderListView.as_view(), name="order-list"),
+    path("checkout/", CheckoutView.as_view(), name="order-checkout"),
+    path("<uuid:pk>/", OrderDetailView.as_view(), name="order-detail"),
+    path("<uuid:pk>/cancel/", OrderCancelView.as_view(), name="order-cancel"),
+]

@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-)w!7r1d+8%k&03z@l88n=8v^e@_!of8f(t1!vtc9$n$()p_a+8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "testserver"]
 
 
 # Application definition
@@ -74,15 +74,10 @@ SIMPLE_JWT = {
 
 
 SPECTACULAR_SETTINGS = {
-"TITLE": "Online Shop API",
-"DESCRIPTION": "Bu loyiha zamonaviy onlayn do‘kon uchun RESTful API taqdim etadi. "
-                "Foydalanuvchilar ro‘yxatdan o‘tish, mahsulotlarni ko‘rish, savatga qo‘shish, "
-                "buyurtma berish, to‘lovni tasdiqlash va sharhlar qoldirish imkoniyatiga ega.",
-"VERSION": "1.0.0",
-"SERVE_INCLUDE_SCHEMA": False,
-"TOS": "https://www.google.com/policies/terms/",
-"CONTACT": {"name": "Support Team", "email": "support@example.com"},
-"LICENSE": {"name": "MIT License"},
+    "TITLE": "Online Shop API",
+    "DESCRIPTION": "Django REST Framework online shop API",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
 }
 
 
@@ -167,8 +162,8 @@ STATIC_URL = "static/"
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-EMAIL_EXPIRATION_TIME = 5
-PHONE_EXPIRATION_TIME = 3
+EMAIL_EXPIRATION_TIME = 10
+PHONE_EXPIRATION_TIME = 10
 
 
 AUTH_USER_MODEL = "accounts.CustomUser"
@@ -180,6 +175,6 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 
-EMAIL_HOST_USER = "m.aminovich7@gmail.com"
-EMAIL_HOST_PASSWORD = "yuyl iovc hros prum"
+EMAIL_HOST_USER = "texnoflow@gmail.com"
+EMAIL_HOST_PASSWORD = "qwyj tomc ojhc pjlj"
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

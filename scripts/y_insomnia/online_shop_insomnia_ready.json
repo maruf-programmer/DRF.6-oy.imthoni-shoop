@@ -1,0 +1,928 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2026-06-03T16:48:30.480Z",
+  "__export_source": "codex.generated",
+  "resources": [
+    {
+      "_id": "wrk_online_shop_ready",
+      "_type": "workspace",
+      "name": "My Online Shop API",
+      "description": "Ready Insomnia collection for the Django DRF online shop project"
+    },
+    {
+      "_id": "env_online_shop_ready",
+      "_type": "environment",
+      "name": "Base Environment",
+      "parentId": "wrk_online_shop_ready",
+      "data": {
+        "base_url": "http://127.0.0.1:8000",
+        "access_token": "",
+        "refresh_token": "",
+        "email_or_phone": "student@example.com",
+        "password": "Strongpass123",
+        "category_id": "ee2b218f-0425-436e-a7fd-254a149f9bdb",
+        "category_slug": "electronics",
+        "product_id": "19b60568-b95b-4ebd-a13f-f6f27831b3b5",
+        "image_id": "",
+        "cart_item_id": "",
+        "order_id": "",
+        "payment_id": "",
+        "review_id": "",
+        "notification_id": ""
+      }
+    },
+    {
+      "_id": "grp_root",
+      "_type": "request_group",
+      "parentId": "wrk_online_shop_ready",
+      "name": "Online Shop API"
+    },
+    {
+      "_id": "grp_swagger",
+      "_type": "request_group",
+      "parentId": "grp_root",
+      "name": "Swagger Docs"
+    },
+    {
+      "_id": "grp_auth",
+      "_type": "request_group",
+      "parentId": "grp_root",
+      "name": "Auth"
+    },
+    {
+      "_id": "grp_categories",
+      "_type": "request_group",
+      "parentId": "grp_root",
+      "name": "Categories"
+    },
+    {
+      "_id": "grp_products",
+      "_type": "request_group",
+      "parentId": "grp_root",
+      "name": "Products"
+    },
+    {
+      "_id": "grp_cart",
+      "_type": "request_group",
+      "parentId": "grp_root",
+      "name": "Cart"
+    },
+    {
+      "_id": "grp_orders",
+      "_type": "request_group",
+      "parentId": "grp_root",
+      "name": "Orders"
+    },
+    {
+      "_id": "grp_payments",
+      "_type": "request_group",
+      "parentId": "grp_root",
+      "name": "Payments"
+    },
+    {
+      "_id": "grp_reviews",
+      "_type": "request_group",
+      "parentId": "grp_root",
+      "name": "Reviews"
+    },
+    {
+      "_id": "grp_wishlist",
+      "_type": "request_group",
+      "parentId": "grp_root",
+      "name": "Wishlist"
+    },
+    {
+      "_id": "grp_notifications",
+      "_type": "request_group",
+      "parentId": "grp_root",
+      "name": "Notifications"
+    },
+    {
+      "_id": "req_swagger_ui",
+      "parentId": "grp_swagger",
+      "name": "Open Swagger UI",
+      "_type": "request",
+      "method": "GET",
+      "url": "{{ base_url }}/api/schema/swagger-ui/",
+      "authentication": {}
+    },
+    {
+      "_id": "req_schema_json",
+      "parentId": "grp_swagger",
+      "name": "OpenAPI Schema",
+      "_type": "request",
+      "method": "GET",
+      "url": "{{ base_url }}/api/schema/",
+      "authentication": {}
+    },
+    {
+      "_id": "req_redoc",
+      "parentId": "grp_swagger",
+      "name": "ReDoc",
+      "_type": "request",
+      "method": "GET",
+      "url": "{{ base_url }}/api/schema/redoc/",
+      "authentication": {}
+    },
+    {
+      "_id": "req_signup",
+      "parentId": "grp_auth",
+      "name": "1. Sign Up",
+      "_type": "request",
+      "method": "POST",
+      "url": "{{ base_url }}/auth/signup/",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"email_or_phone\": \"{{ email_or_phone }}\"\n}"
+      },
+      "authentication": {}
+    },
+    {
+      "_id": "req_verify",
+      "parentId": "grp_auth",
+      "name": "2. Verify Code",
+      "_type": "request",
+      "method": "POST",
+      "url": "{{ base_url }}/auth/verify-code/",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"email_or_phone\": \"{{ email_or_phone }}\",\n  \"code\": \"1234\"\n}"
+      },
+      "authentication": {}
+    },
+    {
+      "_id": "req_resend",
+      "parentId": "grp_auth",
+      "name": "Resend Code",
+      "_type": "request",
+      "method": "POST",
+      "url": "{{ base_url }}/auth/resend-code/",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"email_or_phone\": \"{{ email_or_phone }}\"\n}"
+      },
+      "authentication": {}
+    },
+    {
+      "_id": "req_change_profile_info",
+      "parentId": "grp_auth",
+      "name": "3. Change Profile Info",
+      "_type": "request",
+      "method": "PUT",
+      "url": "{{ base_url }}/auth/change-profile-info/",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"first_name\": \"Ali\",\n  \"last_name\": \"Valiyev\",\n  \"password\": \"{{ password }}\",\n  \"confirm_password\": \"{{ password }}\",\n  \"user_role\": \"seller\"\n}"
+      },
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_upload_photo",
+      "parentId": "grp_auth",
+      "name": "4. Upload Photo",
+      "_type": "request",
+      "method": "PUT",
+      "url": "{{ base_url }}/auth/upload-photo/",
+      "body": {
+        "mimeType": "multipart/form-data",
+        "params": [
+          {
+            "name": "photo",
+            "type": "file",
+            "fileName": ""
+          }
+        ]
+      },
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_login",
+      "parentId": "grp_auth",
+      "name": "5. Login",
+      "_type": "request",
+      "method": "POST",
+      "url": "{{ base_url }}/auth/login/",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"email_or_phone\": \"{{ email_or_phone }}\",\n  \"password\": \"{{ password }}\"\n}"
+      },
+      "authentication": {}
+    },
+    {
+      "_id": "req_refresh",
+      "parentId": "grp_auth",
+      "name": "Token Refresh",
+      "_type": "request",
+      "method": "POST",
+      "url": "{{ base_url }}/auth/api/token/refresh/",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"refresh\": \"{{ refresh_token }}\"\n}"
+      },
+      "authentication": {}
+    },
+    {
+      "_id": "req_profile",
+      "parentId": "grp_auth",
+      "name": "Profile",
+      "_type": "request",
+      "method": "GET",
+      "url": "{{ base_url }}/auth/profile/",
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_update_profile",
+      "parentId": "grp_auth",
+      "name": "Update Profile",
+      "_type": "request",
+      "method": "PUT",
+      "url": "{{ base_url }}/auth/profile/update/",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"first_name\": \"Ali\",\n  \"last_name\": \"Valiyev\",\n  \"user_role\": \"seller\"\n}"
+      },
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_change_password",
+      "parentId": "grp_auth",
+      "name": "Change Password",
+      "_type": "request",
+      "method": "POST",
+      "url": "{{ base_url }}/auth/change-password/",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"old_password\": \"{{ password }}\",\n  \"new_password\": \"Newpass123\",\n  \"confirm_password\": \"Newpass123\"\n}"
+      },
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_forgot",
+      "parentId": "grp_auth",
+      "name": "Forgot Password",
+      "_type": "request",
+      "method": "POST",
+      "url": "{{ base_url }}/auth/forgot-password/",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"email_or_phone\": \"{{ email_or_phone }}\"\n}"
+      },
+      "authentication": {}
+    },
+    {
+      "_id": "req_reset",
+      "parentId": "grp_auth",
+      "name": "Reset Password",
+      "_type": "request",
+      "method": "POST",
+      "url": "{{ base_url }}/auth/reset-password/",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"email_or_phone\": \"{{ email_or_phone }}\",\n  \"code\": \"1234\",\n  \"new_password\": \"{{ password }}\",\n  \"confirm_password\": \"{{ password }}\"\n}"
+      },
+      "authentication": {}
+    },
+    {
+      "_id": "req_logout",
+      "parentId": "grp_auth",
+      "name": "Logout",
+      "_type": "request",
+      "method": "POST",
+      "url": "{{ base_url }}/auth/logout/",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"refresh\": \"{{ refresh_token }}\"\n}"
+      },
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_cat_list",
+      "parentId": "grp_categories",
+      "name": "List Categories",
+      "_type": "request",
+      "method": "GET",
+      "url": "{{ base_url }}/api/categories/",
+      "authentication": {}
+    },
+    {
+      "_id": "req_cat_create",
+      "parentId": "grp_categories",
+      "name": "Create Category (Admin)",
+      "_type": "request",
+      "method": "POST",
+      "url": "{{ base_url }}/api/categories/",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Electronics\",\n  \"slug\": \"electronics\",\n  \"parent\": null\n}"
+      },
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_cat_get",
+      "parentId": "grp_categories",
+      "name": "Get Category",
+      "_type": "request",
+      "method": "GET",
+      "url": "{{ base_url }}/api/categories/{{ category_slug }}/",
+      "authentication": {}
+    },
+    {
+      "_id": "req_cat_patch",
+      "parentId": "grp_categories",
+      "name": "Update Category (Admin)",
+      "_type": "request",
+      "method": "PATCH",
+      "url": "{{ base_url }}/api/categories/{{ category_slug }}/",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Electronics Updated\"\n}"
+      },
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_cat_delete",
+      "parentId": "grp_categories",
+      "name": "Delete Category (Admin)",
+      "_type": "request",
+      "method": "DELETE",
+      "url": "{{ base_url }}/api/categories/{{ category_slug }}/",
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_prod_list",
+      "parentId": "grp_products",
+      "name": "List Products",
+      "_type": "request",
+      "method": "GET",
+      "url": "{{ base_url }}/api/products/",
+      "authentication": {}
+    },
+    {
+      "_id": "req_prod_create",
+      "parentId": "grp_products",
+      "name": "Create Product (Seller/Admin)",
+      "_type": "request",
+      "method": "POST",
+      "url": "{{ base_url }}/api/products/",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"category\": \"{{ category_id }}\",\n  \"title\": \"Test Product\",\n  \"description\": \"Good product for testing\",\n  \"price\": \"120000.00\",\n  \"discount_price\": \"100000.00\",\n  \"stock\": 20,\n  \"status\": \"published\"\n}"
+      },
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_prod_get",
+      "parentId": "grp_products",
+      "name": "Get Product",
+      "_type": "request",
+      "method": "GET",
+      "url": "{{ base_url }}/api/products/{{ product_id }}/",
+      "authentication": {}
+    },
+    {
+      "_id": "req_prod_patch",
+      "parentId": "grp_products",
+      "name": "Update Product (Owner/Admin)",
+      "_type": "request",
+      "method": "PATCH",
+      "url": "{{ base_url }}/api/products/{{ product_id }}/",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"title\": \"Updated Product\",\n  \"stock\": 15\n}"
+      },
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_prod_delete",
+      "parentId": "grp_products",
+      "name": "Delete Product (Owner/Admin)",
+      "_type": "request",
+      "method": "DELETE",
+      "url": "{{ base_url }}/api/products/{{ product_id }}/",
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_prod_upload",
+      "parentId": "grp_products",
+      "name": "Upload Product Image",
+      "_type": "request",
+      "method": "POST",
+      "url": "{{ base_url }}/api/products/{{ product_id }}/upload-image/",
+      "body": {
+        "mimeType": "multipart/form-data",
+        "params": [
+          {
+            "name": "image",
+            "type": "file",
+            "fileName": ""
+          },
+          {
+            "name": "is_main",
+            "value": "true"
+          }
+        ]
+      },
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_prod_main",
+      "parentId": "grp_products",
+      "name": "Set Main Image",
+      "_type": "request",
+      "method": "POST",
+      "url": "{{ base_url }}/api/products/{{ product_id }}/set-main-image/{{ image_id }}/",
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_prod_del_image",
+      "parentId": "grp_products",
+      "name": "Delete Product Image",
+      "_type": "request",
+      "method": "DELETE",
+      "url": "{{ base_url }}/api/products/{{ product_id }}/delete-image/{{ image_id }}/",
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_cart_get",
+      "parentId": "grp_cart",
+      "name": "Get Cart",
+      "_type": "request",
+      "method": "GET",
+      "url": "{{ base_url }}/api/cart/",
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_cart_add",
+      "parentId": "grp_cart",
+      "name": "Add To Cart",
+      "_type": "request",
+      "method": "POST",
+      "url": "{{ base_url }}/api/cart/items/",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"product\": \"{{ product_id }}\",\n  \"quantity\": 2\n}"
+      },
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_cart_update",
+      "parentId": "grp_cart",
+      "name": "Update Cart Item",
+      "_type": "request",
+      "method": "PATCH",
+      "url": "{{ base_url }}/api/cart/items/{{ cart_item_id }}/",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"quantity\": 3\n}"
+      },
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_cart_delete",
+      "parentId": "grp_cart",
+      "name": "Remove Cart Item",
+      "_type": "request",
+      "method": "DELETE",
+      "url": "{{ base_url }}/api/cart/items/{{ cart_item_id }}/delete/",
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_order_list",
+      "parentId": "grp_orders",
+      "name": "List Orders",
+      "_type": "request",
+      "method": "GET",
+      "url": "{{ base_url }}/api/orders/",
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_order_checkout",
+      "parentId": "grp_orders",
+      "name": "Checkout From Cart",
+      "_type": "request",
+      "method": "POST",
+      "url": "{{ base_url }}/api/orders/checkout/",
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_order_get",
+      "parentId": "grp_orders",
+      "name": "Get Order",
+      "_type": "request",
+      "method": "GET",
+      "url": "{{ base_url }}/api/orders/{{ order_id }}/",
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_order_patch",
+      "parentId": "grp_orders",
+      "name": "Update Order Status (Admin)",
+      "_type": "request",
+      "method": "PATCH",
+      "url": "{{ base_url }}/api/orders/{{ order_id }}/",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"status\": \"delivering\"\n}"
+      },
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_order_cancel",
+      "parentId": "grp_orders",
+      "name": "Cancel Order",
+      "_type": "request",
+      "method": "POST",
+      "url": "{{ base_url }}/api/orders/{{ order_id }}/cancel/",
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_payment_list",
+      "parentId": "grp_payments",
+      "name": "List Payments",
+      "_type": "request",
+      "method": "GET",
+      "url": "{{ base_url }}/api/payments/",
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_payment_get",
+      "parentId": "grp_payments",
+      "name": "Get Payment",
+      "_type": "request",
+      "method": "GET",
+      "url": "{{ base_url }}/api/payments/{{ payment_id }}/",
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_payment_confirm",
+      "parentId": "grp_payments",
+      "name": "Confirm Payment",
+      "_type": "request",
+      "method": "POST",
+      "url": "{{ base_url }}/api/payments/{{ payment_id }}/confirm/",
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_review_list",
+      "parentId": "grp_reviews",
+      "name": "List Reviews",
+      "_type": "request",
+      "method": "GET",
+      "url": "{{ base_url }}/api/reviews/",
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_review_create",
+      "parentId": "grp_reviews",
+      "name": "Create Review",
+      "_type": "request",
+      "method": "POST",
+      "url": "{{ base_url }}/api/reviews/",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"product\": \"{{ product_id }}\",\n  \"rating\": 5,\n  \"title\": \"Yaxshi\",\n  \"comment\": \"Mahsulot menga yoqdi\"\n}"
+      },
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_review_get",
+      "parentId": "grp_reviews",
+      "name": "Get Review",
+      "_type": "request",
+      "method": "GET",
+      "url": "{{ base_url }}/api/reviews/{{ review_id }}/",
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_review_patch",
+      "parentId": "grp_reviews",
+      "name": "Update Review",
+      "_type": "request",
+      "method": "PATCH",
+      "url": "{{ base_url }}/api/reviews/{{ review_id }}/",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"rating\": 4,\n  \"comment\": \"Yangilangan comment\"\n}"
+      },
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_review_delete",
+      "parentId": "grp_reviews",
+      "name": "Delete Review",
+      "_type": "request",
+      "method": "DELETE",
+      "url": "{{ base_url }}/api/reviews/{{ review_id }}/",
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_review_approve",
+      "parentId": "grp_reviews",
+      "name": "Approve Review (Admin)",
+      "_type": "request",
+      "method": "POST",
+      "url": "{{ base_url }}/api/reviews/{{ review_id }}/approve/",
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_wish_get",
+      "parentId": "grp_wishlist",
+      "name": "Get Wishlist",
+      "_type": "request",
+      "method": "GET",
+      "url": "{{ base_url }}/api/wishlist/",
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_wish_add",
+      "parentId": "grp_wishlist",
+      "name": "Add To Wishlist",
+      "_type": "request",
+      "method": "POST",
+      "url": "{{ base_url }}/api/wishlist/items/",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"product\": \"{{ product_id }}\"\n}"
+      },
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_wish_remove",
+      "parentId": "grp_wishlist",
+      "name": "Remove From Wishlist",
+      "_type": "request",
+      "method": "DELETE",
+      "url": "{{ base_url }}/api/wishlist/items/",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"product\": \"{{ product_id }}\"\n}"
+      },
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_notif_list",
+      "parentId": "grp_notifications",
+      "name": "List Notifications",
+      "_type": "request",
+      "method": "GET",
+      "url": "{{ base_url }}/api/notifications/",
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    },
+    {
+      "_id": "req_notif_read",
+      "parentId": "grp_notifications",
+      "name": "Mark Notification Read",
+      "_type": "request",
+      "method": "PATCH",
+      "url": "{{ base_url }}/api/notifications/{{ notification_id }}/read/",
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ access_token }}"
+      }
+    }
+  ]
+}

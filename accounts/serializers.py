@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
-from drf_spectacular.utils import extend_schema_serializer, OpenApiExample
 from .models import CustomUser, VIA_EMAIL, VIA_PHONE
 from shared.utility import check_email_or_phone
 from shared.utils import send_to_mail
@@ -9,20 +8,6 @@ from .models import CodeVerify, CHANGE_INFO, DONE
 from django.contrib.auth.password_validation import validate_password
 
 
-@extend_schema_serializer(
-    examples=[
-        OpenApiExample(
-            "Misol (email)",
-            value={"email_or_phone": "user@example.com"},
-            request_only=True,
-        ),
-        OpenApiExample(
-            "Misol (telefon)",
-            value={"email_or_phone": "+998901234567"},
-            request_only=True,
-        ),
-    ]
-)
 class SignUpSerializer(serializers.ModelSerializer):
     email_or_phone = serializers.CharField(
         write_only=True,
@@ -80,15 +65,6 @@ class SignUpSerializer(serializers.ModelSerializer):
         return data
 
 
-@extend_schema_serializer(
-    examples=[
-        OpenApiExample(
-            "Misol (email)",
-            value={"email_or_phone": "user@example.com", "code": "1234"},
-            request_only=True,
-        ),
-    ]
-)
 class VerifyCodeSerializer(serializers.Serializer):
     email_or_phone = serializers.CharField(
         required=True,
@@ -171,21 +147,6 @@ class ResendCodeSerializer(serializers.Serializer):
         return attrs
 
 
-@extend_schema_serializer(
-    examples=[
-        OpenApiExample(
-            "Misol",
-            value={
-                "first_name": "Ali",
-                "last_name": "Valiyev",
-                "password": "strong123",
-                "confirm_password": "strong123",
-                "user_role": "ordinary_user",
-            },
-            request_only=True,
-        ),
-    ]
-)
 class ChangeProfileInfoSerializer(serializers.ModelSerializer):
     password = serializers.CharField(
         write_only=True, required=True, validators=[validate_password],
@@ -297,15 +258,6 @@ class ProfileUpdateSerializer(serializers.ModelSerializer):
         return instance
 
 
-@extend_schema_serializer(
-    examples=[
-        OpenApiExample(
-            "Misol (email)",
-            value={"email_or_phone": "user@example.com", "password": "mypassword"},
-            request_only=True,
-        ),
-    ]
-)
 class LoginSerializer(serializers.Serializer):
     email_or_phone = serializers.CharField(
         required=True, write_only=True,
@@ -444,3 +396,7 @@ class ChangePasswordSerializer(serializers.Serializer):
 
         attrs["user"] = user
         return attrs
+
+
+class LogoutSerializer(serializers.Serializer):
+    refresh = serializers.CharField(required=True, write_only=True)

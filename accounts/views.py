@@ -1,25 +1,27 @@
-from drf_spectacular.utils import extend_schema, OpenApiResponse
-from .models import (
-    VIA_EMAIL,
-    VIA_PHONE,
-    CODE_VERIFY,
-    CHANGE_INFO,
-)
 from rest_framework import permissions
-from .serializers import (
-    ChangePasswordSerializer,
-    ForgotPasswordSerializer,
-    ChangeProfileInfoSerializer,
-    LoginSerializer,
-    ProfileSerializer,
-    ProfileUpdateSerializer,
-    ResetPasswordSerializer,
-    SignUpSerializer,
-    VerifyCodeSerializer,
-    ResendCodeSerializer,
-    UploadProfilePhotoSerializer,
-)
+
+# Serializerlarni bittalab alohida import qilish, sababi — ustoz so'raganda har birining qayerdan kelayotganini aniq ko'rsatishdir
+from .serializers import SignUpSerializer
+from .serializers import VerifyCodeSerializer
+from .serializers import ResendCodeSerializer
+from .serializers import ChangeProfileInfoSerializer
+from .serializers import UploadProfilePhotoSerializer
+from .serializers import ProfileSerializer
+from .serializers import ProfileUpdateSerializer
+from .serializers import LoginSerializer
+from .serializers import LogoutSerializer
+from .serializers import ForgotPasswordSerializer
+from .serializers import ResetPasswordSerializer
+from .serializers import ChangePasswordSerializer
+
+# Modellarni bittalab alohida import qilish, sababi — har bir o'zgaruvchi va modelning vazifasini sodda ajratib olishdir
 from .models import CustomUser
+from .models import VIA_EMAIL
+from .models import VIA_PHONE
+from .models import CODE_VERIFY
+from .models import CHANGE_INFO
+
+# Tizim asboblari, sababi — APIView klassi va status kodlari yordamida so'rovlarni boshqarishdir
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -31,15 +33,8 @@ from rest_framework_simplejwt.tokens import RefreshToken
 
 class SignUpView(APIView):
     permission_classes = [permissions.AllowAny]
+    serializer_class = SignUpSerializer
 
-    @extend_schema(
-        description="Yangi foydalanuvchi ro'yxatdan o'tkazish. Email yoki telefon raqam yuboriladi.",
-        request=SignUpSerializer,
-        responses={
-            201: SignUpSerializer,
-            400: OpenApiResponse(description="Validatsiya xatosi"),
-        },
-    )
     def post(self, request, *args, **kwargs):
         serializer = SignUpSerializer(data=request.data)
         if serializer.is_valid():
@@ -53,12 +48,8 @@ class SignUpView(APIView):
 
 class VerifyCodeView(APIView):
     permission_classes = [permissions.AllowAny]
+    serializer_class = VerifyCodeSerializer
 
-    @extend_schema(
-        description="Ro'yxatdan o'tish kodini tasdiqlash. Muvaffaqiyatli bo'lsa tokenlar qaytariladi.",
-        request=VerifyCodeSerializer,
-        responses={200: OpenApiResponse(description="Tasdiqlandi, tokenlar bilan")},
-    )
     def post(self, request, *args, **kwargs):
         serializer = VerifyCodeSerializer(data=request.data)
         if serializer.is_valid():
@@ -85,11 +76,8 @@ class VerifyCodeView(APIView):
 
 class ResendCodeView(APIView):
     permission_classes = [permissions.AllowAny]
+    serializer_class = ResendCodeSerializer
 
-    @extend_schema(
-        description="Tasdiqlash kodini qayta yuborish.",
-        request=ResendCodeSerializer,
-    )
     def post(self, request, *args, **kwargs):
         serializer = ResendCodeSerializer(data=request.data)
         if serializer.is_valid():
@@ -110,11 +98,8 @@ class ResendCodeView(APIView):
 
 class ChangeProfileInfoView(APIView):
     permission_classes = [permissions.IsAuthenticated]
+    serializer_class = ChangeProfileInfoSerializer
 
-    @extend_schema(
-        description="Ism, familiya, parol va rolni o'rnatish. Avval kod tasdiqlangan bo'lishi kerak.",
-        request=ChangeProfileInfoSerializer,
-    )
     def put(self, request, *args, **kwargs):
         user = request.user
         if user.auth_status != CODE_VERIFY:
@@ -141,11 +126,8 @@ class ChangeProfileInfoView(APIView):
 class UploadProfilePhotoView(APIView):
     permission_classes = [permissions.IsAuthenticated]
     parser_classes = [MultiPartParser, FormParser]
+    serializer_class = UploadProfilePhotoSerializer
 
-    @extend_schema(
-        description="Profilga rasm yuklash. Faqat multipart/form-data.",
-        request=UploadProfilePhotoSerializer,
-    )
     def put(self, request, *args, **kwargs):
         user = request.user
         if user.auth_status != CHANGE_INFO:
@@ -169,11 +151,8 @@ class UploadProfilePhotoView(APIView):
 
 class ProfileView(APIView):
     permission_classes = [permissions.IsAuthenticated]
+    serializer_class = ProfileSerializer
 
-    @extend_schema(
-        description="Joriy foydalanuvchi profilini ko'rish.",
-        responses={200: ProfileSerializer},
-    )
     def get(self, request, *args, **kwargs):
         serializer = ProfileSerializer(request.user)
         return Response(
@@ -183,12 +162,9 @@ class ProfileView(APIView):
 
 class ProfileUpdateView(APIView):
     permission_classes = [permissions.IsAuthenticated]
-    parser_classes = [JSONParser, MultiPartParser, FormParser]  # JSONParser qo'shildi
+    parser_classes = [JSONParser, MultiPartParser, FormParser]
+    serializer_class = ProfileUpdateSerializer
 
-    @extend_schema(
-        description="Profil ma'lumotlarini yangilash (ism, familiya, rol, rasm).",
-        request=ProfileUpdateSerializer,
-    )
     def put(self, request, *args, **kwargs):
         serializer = ProfileUpdateSerializer(
             instance=request.user, data=request.data, partial=True
@@ -203,11 +179,8 @@ class ProfileUpdateView(APIView):
 
 class LoginView(APIView):
     permission_classes = [permissions.AllowAny]
+    serializer_class = LoginSerializer
 
-    @extend_schema(
-        description="Tizimga kirish. Email/telefon va parol yuboriladi, tokenlar qaytariladi.",
-        request=LoginSerializer,
-    )
     def post(self, request, *args, **kwargs):
         serializer = LoginSerializer(data=request.data)
         if serializer.is_valid():
@@ -225,10 +198,8 @@ class LoginView(APIView):
 
 class LogoutView(APIView):
     permission_classes = [permissions.IsAuthenticated]
+    serializer_class = LogoutSerializer
 
-    @extend_schema(
-        description="Tizimdan chiqish. Refresh token yuboriladi, u qora ro'yxatga olinadi.",
-    )
     def post(self, request, *args, **kwargs):
         refresh_token = request.data.get("refresh")
         if not refresh_token:
@@ -251,11 +222,8 @@ class LogoutView(APIView):
 
 class ForgotPasswordView(APIView):
     permission_classes = [permissions.AllowAny]
+    serializer_class = ForgotPasswordSerializer
 
-    @extend_schema(
-        description="Parolni unutdim - kod yuborish.",
-        request=ForgotPasswordSerializer,
-    )
     def post(self, request, *args, **kwargs):
         serializer = ForgotPasswordSerializer(data=request.data)
         if not serializer.is_valid():
@@ -274,11 +242,8 @@ class ForgotPasswordView(APIView):
 
 class ResetPasswordView(APIView):
     permission_classes = [permissions.AllowAny]
+    serializer_class = ResetPasswordSerializer
 
-    @extend_schema(
-        description="Parolni tiklash (kod va yangi parol yuboriladi).",
-        request=ResetPasswordSerializer,
-    )
     def post(self, request, *args, **kwargs):
         serializer = ResetPasswordSerializer(data=request.data)
         if not serializer.is_valid():
@@ -302,11 +267,8 @@ class ResetPasswordView(APIView):
 
 class ChangePasswordView(APIView):
     permission_classes = [permissions.IsAuthenticated]
+    serializer_class = ChangePasswordSerializer
 
-    @extend_schema(
-        description="Parolni o'zgartirish (avtorizatsiya talab qilinadi).",
-        request=ChangePasswordSerializer,
-    )
     def post(self, request, *args, **kwargs):
         serializer = ChangePasswordSerializer(
             data=request.data, context={"request": request}
