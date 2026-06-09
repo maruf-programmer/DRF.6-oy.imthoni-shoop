@@ -175,6 +175,6 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 
-EMAIL_HOST_USER = "texnoflow@gmail.com"
-EMAIL_HOST_PASSWORD = "qwyj tomc ojhc pjlj"
+EMAIL_HOST_USER = "   haqiqiy email   "
+EMAIL_HOST_PASSWORD = "16 talik kod   "
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
